@@ -42,3 +42,15 @@ openTaskNew = () => {
 openTaskList = () => {
 	return '/lightning/o/Task/home';
 }
+openProcessAutomation = () => {
+	return '/lightning/setup/ProcessAutomation/home';
+}
+openFlows = () => {
+	return '/lightning/setup/Flows/home';
+}
+openWorkflowRules = () => {
+	return '/lightning/setup/WorkflowRules/home';
+}
+openApprovalProcesses = () => {
+	return '/lightning/setup/ApprovalProcesses/home';
+}

@@ -3,6 +3,13 @@ body {
     height: 500px;
 }
 
+.header {
+    text-align: center;
+    font-size: 16px;
+    font-family: cursive;
+    color: cadetblue;
+}
+
 .mainButtons {
     display: flex;
     justify-content: space-between;
@@ -17,4 +24,16 @@ body {
     font-weight: 500;
     text-align: center;
     color: darkgreen;
+}
+
+.Automation > div > p {
+    font-weight: 500;
+    text-align: center;
+    color: darkgreen;
+    font-size: 13px;
+}
+
+.AutomationList {
+    display: flex;
+    justify-content: space-between;
 }

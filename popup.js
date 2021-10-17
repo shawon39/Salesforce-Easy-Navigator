@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Getting Language & Time Zone
     let language = document.getElementById("language");
     btnClickFuc(language);
+
     // Create a new Account
     let accountNew = document.getElementById("accountNew");
     btnClickFuc(accountNew);
@@ -43,5 +44,18 @@ document.addEventListener("DOMContentLoaded", () => {
     // Getting Task list
     let taskList = document.getElementById("taskList");
     btnClickFuc(taskList);
+
+    // Process Builder
+    let processAutomation = document.getElementById("processAutomation");
+    btnClickFuc(processAutomation);
+    // Flows
+    let flows = document.getElementById("flows");
+    btnClickFuc(flows);
+    // WorkflowRules
+    let workflowRules = document.getElementById("workflowRules");
+    btnClickFuc(workflowRules);
+    // ApprovalProcesses
+    let approvalProcesses = document.getElementById("approvalProcesses");
+    btnClickFuc(approvalProcesses);
 });
 

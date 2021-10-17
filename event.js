@@ -44,6 +44,14 @@ openUrl = (baseUrl, page) => {
 		chrome.tabs.create({ active: true, url: baseUrl + openTaskNew() });
 	} else if (page === "taskList") {
 		chrome.tabs.create({ active: true, url: baseUrl + openTaskList() });
+	} else if (page === "processAutomation") {
+		chrome.tabs.create({ active: true, url: baseUrl + openProcessAutomation() });
+	} else if (page === "flows") {
+		chrome.tabs.create({ active: true, url: baseUrl + openFlows() });
+	} else if (page === "workflowRules") {
+		chrome.tabs.create({ active: true, url: baseUrl + openWorkflowRules() });
+	} else if (page === "approvalProcesses") {
+		chrome.tabs.create({ active: true, url: baseUrl + openApprovalProcesses() });
 	}
 
 	//chrome.tabs.update({url: baseUrl + '/lightning/setup/SetupOneHome/home'});
