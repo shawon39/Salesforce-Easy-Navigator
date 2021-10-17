@@ -1,0 +1,13 @@
+body {
+    width: 500px;
+    height: 500px;
+}
+
+.mainButtons {
+    display: flex;
+    justify-content: space-between;
+}
+
+#setup, #devConsole, #objManager {
+    
+}
