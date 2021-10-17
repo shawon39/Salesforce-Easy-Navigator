@@ -3,53 +3,45 @@
 document.addEventListener("DOMContentLoaded", () => {
 	// Getting Setup
 	let setup = document.getElementById("setup");
-	if (setup) {
-		setup.addEventListener("click", () => {
-			getCurrentTab("setup");
-		});
-	}
+    btnClickFuc(setup);
 	// Getting devConsole
 	let devConsole = document.getElementById("devConsole");
-	if (devConsole) {
-		devConsole.addEventListener("click", () => {
-			getCurrentTab("devConsole");
-		});
-	}
+    btnClickFuc(devConsole);
     // Getting ObjManager
     let objManager = document.getElementById("objManager");
-	if (objManager) {
-		objManager.addEventListener("click", () => {
-			getCurrentTab("objManager");
-		});
-	}
+    btnClickFuc(objManager);
     // Getting Language & Time Zone
     let language = document.getElementById("language");
-	if (objManager) {
-		language.addEventListener("click", () => {
-			getCurrentTab("language");
-		});
-	}
-
+    btnClickFuc(language);
+    // Create a new Account
+    let accountNew = document.getElementById("accountNew");
+    btnClickFuc(accountNew);
+    // Getting Account List
+    let accountList = document.getElementById("accountList");
+    btnClickFuc(accountList);
+    // Create a new Contact
+    let contactNew = document.getElementById("contactNew");
+    btnClickFuc(contactNew);
+    // Getting Contact List
+    let contactList = document.getElementById("contactList");
+    btnClickFuc(contactList);
+    // Create a new Opportunity
+    let opportunityNew = document.getElementById("opportunityNew");
+    btnClickFuc(opportunityNew);
+    // Getting Opportunity list
+    let opportunityList = document.getElementById("opportunityList");
+    btnClickFuc(opportunityList);
+    // Create a new Lead
+    let leadNew = document.getElementById("leadNew");
+    btnClickFuc(leadNew);
+    // Getting Lead list
+    let leadList = document.getElementById("leadList");
+    btnClickFuc(leadList);
+    // Create a new Task
+    let taskNew = document.getElementById("taskNew");
+    btnClickFuc(taskNew);
+    // Getting Task list
+    let taskList = document.getElementById("taskList");
+    btnClickFuc(taskList);
 });
 
-async function getCurrentTab(page) {
-	let queryOptions = { active: true, currentWindow: true };
-	let [tab] = await chrome.tabs.query(queryOptions);
-	let fullUrl = tab.url;
-	let baseUrl = fullUrl.substring(0, fullUrl.indexOf("/", 10));
-	openUrl(baseUrl, page);
-}
-
-openUrl = (baseUrl, page) => {
-	if (page === "setup") {
-		chrome.tabs.create({ active: true, url: baseUrl + openSetup() });
-	} else if (page === "devConsole") {
-		chrome.tabs.create({ active: true, url: baseUrl + openDevConsole() });
-	} else if (page === "objManager") {
-		chrome.tabs.create({ active: true, url: baseUrl + openObjManager() });
-	} else if (page === "language") {
-		chrome.tabs.create({ active: true, url: baseUrl + openLanguage() });
-	}
-
-	//chrome.tabs.update({url: baseUrl + '/lightning/setup/SetupOneHome/home'});
-};
