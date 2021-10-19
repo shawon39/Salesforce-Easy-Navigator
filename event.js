@@ -1,6 +1,6 @@
 // btnClickFuc
 btnClickFuc = (btnClick) => {
-    if (btnClick) {
+	if (btnClick) {
 		btnClick.addEventListener("click", (event) => {
 			getCurrentTab(event.target.id);
 		});
@@ -12,7 +12,9 @@ async function getCurrentTab(page) {
 	let [tab] = await chrome.tabs.query(queryOptions);
 	let fullUrl = tab.url;
 	let baseUrl = fullUrl.substring(0, fullUrl.indexOf("/", 10));
-	openUrl(baseUrl, page);
+	if (baseUrl.includes("force.com")) {
+		openUrl(baseUrl, page);
+	}
 }
 
 openUrl = (baseUrl, page) => {

@@ -1,75 +1,75 @@
 body {
-    width: 505px;
-    height: 508px;
-    font-family: cursive;
+	width: 505px;
+	height: 508px;
+	font-family: cursive;
 }
 
 .header {
-    text-align: center;
-    font-size: 16px;
-    font-family: cursive;
-    color: cadetblue;
+	text-align: center;
+	font-size: 16px;
+	font-family: cursive;
+	color: cadetblue;
 }
 
 .mainButtons {
-    display: flex;
-    justify-content: space-between;
+	display: flex;
+	justify-content: space-between;
 }
 
 .sObject {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    justify-items: center;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	justify-items: center;
 }
 
 .sObject > div > p {
-    font-weight: 500;
-    text-align: center;
-    color: darkgreen;
-    height: 10px;
+	font-weight: 500;
+	text-align: center;
+	color: darkgreen;
+	height: 10px;
 }
 
 .Automation > div > p {
-    font-weight: 500;
-    text-align: center;
-    color: darkgreen;
-    font-size: 13px;
-    height: 10px;
+	font-weight: 500;
+	text-align: center;
+	color: darkgreen;
+	font-size: 13px;
+	height: 10px;
 }
 
 .AutomationList {
-    display: flex;
-    justify-content: space-between;
+	display: flex;
+	justify-content: space-between;
 }
 
 .AutomationList > button {
-    width: 122px;
+	width: 122px;
 }
 
 .commonThings > div > p {
-    font-weight: 500;
-    text-align: center;
-    color: darkgreen;
-    font-size: 13px;
-    height: 10px;
+	font-weight: 500;
+	text-align: center;
+	color: darkgreen;
+	font-size: 13px;
+	height: 10px;
 }
 
 .commonThingsList {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 5px;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-gap: 5px;
 }
 
 .social {
-    display: flex;
-    justify-content: space-around;
+	display: flex;
+	justify-content: space-around;
 }
 
 .social a {
-    text-decoration: none;
-    font-weight: 500;
+	text-decoration: none;
+	font-weight: 500;
 }
 
 hr {
-    margin-top: 35px;
+	margin-top: 35px;
 }
