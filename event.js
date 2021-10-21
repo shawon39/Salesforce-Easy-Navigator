@@ -7,17 +7,30 @@ btnClickFuc = (btnClick) => {
 	}
 };
 
+orgDetermine = (baseUrl) => {
+	if(baseUrl.includes("dev-ed.lightning.force.com")) {
+		return 1;
+	} else if(baseUrl.includes("dev-ed.my.salesforce.com")) {
+		return 2;
+	} else if(baseUrl.includes("dev.lightning.force.com")) {
+		return 3;
+	} else if(baseUrl.includes("dev.my.salesforce.com")) {
+		return 4;
+	}
+};
+
 async function getCurrentTab(page) {
 	let queryOptions = { active: true, currentWindow: true };
 	let [tab] = await chrome.tabs.query(queryOptions);
 	let fullUrl = tab.url;
 	let baseUrl = fullUrl.substring(0, fullUrl.indexOf("/", 10));
+	let orgType = orgDetermine(baseUrl);
 	if (baseUrl.includes("force.com")) {
-		openUrl(baseUrl, page);
+		openUrl(baseUrl, page, orgType);
 	}
 }
 
-openUrl = (baseUrl, page) => {
+openUrl = (baseUrl, page, orgType) => {
 	// Main Tools
 	if (page === "setup") {
 		chrome.tabs.create({ active: true, url: baseUrl + openSetup() });
@@ -78,7 +91,7 @@ openUrl = (baseUrl, page) => {
 	}
 	// Some Common Tools
 	else if (page === "profile") {
-		chrome.tabs.create({ active: true, url: baseUrl + openProfile() });
+		chrome.tabs.create({ active: true, url: baseUrl + openProfile(orgType) });
 	} else if (page === "tabs") {
 		chrome.tabs.create({ active: true, url: baseUrl + openTabs() });
 	} else if (page === "appManager") {
