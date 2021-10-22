@@ -8,13 +8,13 @@ btnClickFuc = (btnClick) => {
 };
 
 orgDetermine = (baseUrl) => {
-	if(baseUrl.includes("dev-ed.lightning.force.com")) {
+	if (baseUrl.includes("dev-ed.lightning.force.com")) {
 		return 1;
-	} else if(baseUrl.includes("dev-ed.my.salesforce.com")) {
+	} else if (baseUrl.includes("dev-ed.my.salesforce.com")) {
 		return 2;
-	} else if(baseUrl.includes("dev.lightning.force.com")) {
+	} else if (baseUrl.includes("dev.lightning.force.com")) {
 		return 3;
-	} else if(baseUrl.includes("dev.my.salesforce.com")) {
+	} else if (baseUrl.includes("dev.my.salesforce.com")) {
 		return 4;
 	}
 };

@@ -5,7 +5,7 @@ body {
 }
 .header {
 	text-align: center;
-	font-size: 16px;
+	font-size: 18px;
 	font-family: cursive;
 	color: lightslategrey;
 }
@@ -14,7 +14,7 @@ body {
 	justify-content: space-between;
 }
 button#setup {
-	width: 118px;
+	width: 122px;
 }
 .sObject {
 	display: grid;
@@ -28,7 +28,7 @@ button#setup {
 	height: 10px;
 }
 .sObject button {
-    margin-left: 2px;
+	margin-left: 2px;
 }
 .Automation > div > p {
 	font-weight: 500;
@@ -44,7 +44,9 @@ button#setup {
 .AutomationList > button {
 	width: 122px;
 }
-.Automation, .commonThings, .sObject {
+.Automation,
+.commonThings,
+.sObject {
 	margin-top: -6px;
 }
 .commonThings > div > p {
@@ -72,10 +74,12 @@ hr {
 	margin-top: 30px;
 }
 .commonThingsList button {
-    padding-top: 3px;
-    padding-bottom: 3px;
+	padding-top: 3px;
+	padding-bottom: 3px;
 }
 
-.Lead, .Case, .Task {
+.Lead,
+.Case,
+.Task {
 	margin-top: -8px;
 }

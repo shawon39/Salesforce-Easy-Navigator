@@ -80,10 +80,10 @@ openApprovalProcesses = () => {
 	return "/lightning/setup/ApprovalProcesses/home";
 };
 // Some common Tools
-openProfile = (orgType) => {
+openProfile = () => {
 	return "/lightning/setup/Profiles/home";
 };
-openEnhancedProfile = (orgType) => {
+openEnhancedProfile = () => {
 	return "/lightning/setup/EnhancedProfiles/home";
 };
 openTabs = () => {

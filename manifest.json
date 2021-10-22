@@ -1,10 +1,16 @@
 {
-    "name": "Salesforce Shortcuts",
-    "description": "Salesforce Shortcuts!",
-    "version": "1.0",
+    "name": "Salesforce Easy Navigator",
+    "description": "This extension will help you to navigate Salesforce most used tools",
+    "version": "1.0.0.0",
     "manifest_version": 3,
     "action": {
-        "default_popup": "popup.html"
+        "default_popup": "popup.html",
+        "default_icon": {
+            "16": "/images/navigator16.png",
+            "32": "/images/navigator32.png",
+            "48": "/images/navigator48.png",
+            "128": "/images/navigator128.png"
+        }
     },
     "permissions": [
         "tabs"
