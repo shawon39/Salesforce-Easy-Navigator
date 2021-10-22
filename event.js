@@ -24,13 +24,13 @@ async function getCurrentTab(page) {
 	let [tab] = await chrome.tabs.query(queryOptions);
 	let fullUrl = tab.url;
 	let baseUrl = fullUrl.substring(0, fullUrl.indexOf("/", 10));
-	let orgType = orgDetermine(baseUrl);
+	// let orgType = orgDetermine(baseUrl);
 	if (baseUrl.includes("force.com")) {
-		openUrl(baseUrl, page, orgType);
+		openUrl(baseUrl, page);
 	}
 }
 
-openUrl = (baseUrl, page, orgType) => {
+openUrl = (baseUrl, page) => {
 	// Main Tools
 	if (page === "setup") {
 		chrome.tabs.create({ active: true, url: baseUrl + openSetup() });
@@ -91,7 +91,9 @@ openUrl = (baseUrl, page, orgType) => {
 	}
 	// Some Common Tools
 	else if (page === "profile") {
-		chrome.tabs.create({ active: true, url: baseUrl + openProfile(orgType) });
+		chrome.tabs.create({ active: true, url: baseUrl + openProfile() });
+	} else if (page === "enhancedProfile") {
+		chrome.tabs.create({ active: true, url: baseUrl + openEnhancedProfile() });
 	} else if (page === "tabs") {
 		chrome.tabs.create({ active: true, url: baseUrl + openTabs() });
 	} else if (page === "appManager") {
@@ -133,5 +135,4 @@ openUrl = (baseUrl, page, orgType) => {
 	} else if (page === "forecastFiscalYear") {
 		chrome.tabs.create({ active: true, url: baseUrl + openForecastFiscalYear() });
 	}
-	//chrome.tabs.update({url: baseUrl + '/lightning/setup/SetupOneHome/home'});
 };

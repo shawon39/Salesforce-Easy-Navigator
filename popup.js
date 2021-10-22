@@ -1,5 +1,4 @@
-// import { openSetup, openDevConsole } from "./openUrl";
-
+// Event
 document.addEventListener("DOMContentLoaded", () => {
 	// Getting Setup
 	let setup = document.getElementById("setup");
@@ -86,6 +85,9 @@ document.addEventListener("DOMContentLoaded", () => {
 	// profile
 	let profile = document.getElementById("profile");
 	btnClickFuc(profile);
+	// profile
+	let enhancedProfile = document.getElementById("enhancedProfile");
+	btnClickFuc(enhancedProfile);
 	// tabs
 	let tabs = document.getElementById("tabs");
 	btnClickFuc(tabs);

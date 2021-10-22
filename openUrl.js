@@ -81,11 +81,10 @@ openApprovalProcesses = () => {
 };
 // Some common Tools
 openProfile = (orgType) => {
-	if (orgType == 1) {
-		return "/lightning/setup/EnhancedProfiles/home";
-	} else if(orgType == 3) {
-		return "/lightning/setup/Profiles/home";
-	}
+	return "/lightning/setup/Profiles/home";
+};
+openEnhancedProfile = (orgType) => {
+	return "/lightning/setup/EnhancedProfiles/home";
 };
 openTabs = () => {
 	return "/lightning/setup/CustomTabs/home";
