@@ -1,3 +1,7 @@
+// Reuse getElementById
+let getValue = (id) => {
+	return document.getElementById(id).value;
+};
 // Main pages
 openSetup = () => {
 	return "/lightning/setup/SetupOneHome/home";
@@ -13,58 +17,58 @@ openLanguage = () => {
 };
 // sObject
 openAccountNew = () => {
-	return "/lightning/o/Account/new";
+	return "/lightning/o/" + getValue("account") + "/new";
 };
 openAccountList = () => {
-	return "/lightning/o/Account/home";
+	return "/lightning/o/" + getValue("account") + "/home";
 };
 openAccountDetail = () => {
-	return "/lightning/setup/ObjectManager/Account/view";
+	return "/lightning/setup/ObjectManager/" + getValue("account") + "/view";
 };
 openContactNew = () => {
-	return "/lightning/o/Contact/new";
+	return "/lightning/o/" + getValue("contact") + "/new";
 };
 openContactList = () => {
-	return "/lightning/o/Contact/home";
+	return "/lightning/o/" + getValue("contact") + "/home";
 };
 openContactDetail = () => {
-	return "/lightning/setup/ObjectManager/Contact/view";
+	return "/lightning/setup/ObjectManager/" + getValue("contact") + "/view";
 };
 openOpportunityNew = () => {
-	return "/lightning/o/Opportunity/new";
+	return "/lightning/o/" + getValue("opportunity") + "/new";
 };
 openOpportunityList = () => {
-	return "/lightning/o/Opportunity/home";
+	return "/lightning/o/" + getValue("opportunity") + "/home";
 };
 openOpportunityDetail = () => {
-	return "/lightning/setup/ObjectManager/Opportunity/view";
+	return "/lightning/setup/ObjectManager/" + getValue("opportunity") + "/view";
 };
 openLeadNew = () => {
-	return "/lightning/o/Lead/new";
+	return "/lightning/o/" + getValue("lead") + "/new";
 };
 openLeadList = () => {
-	return "/lightning/o/Lead/home";
+	return "/lightning/o/" + getValue("lead") + "/home";
 };
 openLeadDetail = () => {
-	return "/lightning/setup/ObjectManager/Lead/view";
+	return "/lightning/setup/ObjectManager/" + getValue("lead") + "/view";
 };
 openCaseNew = () => {
-	return "/lightning/o/Case/new";
+	return "/lightning/o/" + getValue("cases") + "/new";
 };
 openCaseList = () => {
-	return "/lightning/o/Case/home";
+	return "/lightning/o/" + getValue("cases") + "/home";
 };
 openCaseDetail = () => {
-	return "/lightning/setup/ObjectManager/Case/view";
+	return "/lightning/setup/ObjectManager/" + getValue("cases") + "/view";
 };
 openTaskNew = () => {
-	return "/lightning/o/Task/new";
+	return "/lightning/o/" + getValue("task") + "/new";
 };
 openTaskList = () => {
-	return "/lightning/o/Task/home";
+	return "/lightning/o/" + getValue("task") + "/home";
 };
 openTaskDetail = () => {
-	return "/lightning/setup/ObjectManager/Task/view";
+	return "/lightning/setup/ObjectManager/" + getValue("task") + "/view";
 };
 // Automation Tools
 openProcessAutomation = () => {

@@ -2,9 +2,11 @@
 <html lang="en">
 	<head>
 		<link rel="stylesheet" href="styles.css" />
+		<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&display=swap" rel="stylesheet" />
 		<script src="popup.js"></script>
 		<script src="openUrl.js"></script>
 		<script src="event.js"></script>
+		<script src="keyupEvent.js"></script>
 	</head>
 	<body>
 		<div class="header">
@@ -32,65 +34,65 @@
 				<p>Some Common Tools</p>
 			</div>
 			<div class="commonThingsList">
-				<button id="profile">Profile</button>
-				<button id="enhancedProfile">Enhanced Profile</button>
-				<button id="tabs">Tabs</button>
-				<button id="appManager">App Manager</button>
-				<button id="flexiPageList">Lightning App Builder</button>
-				<button id="components">Lightning Components</button>
-				<button id="customLabels">Custom Labels</button>
-				<button id="importWizard">Data Import Wizard</button>
-				<button id="schemaBuilder">SchemaBuilder</button>
-				<button id="themesBranding">Themes & Branding</button>
 				<button id="apexClasses">Apex Classes</button>
 				<button id="apexTriggers">Apex Triggers</button>
-				<button id="users">Users</button>
+				<button id="appManager">App Manager</button>
 				<button id="emailTemplate">Classic Email Templates</button>
-				<button id="permissionSets">Permission Sets</button>
-				<button id="installedPackages">Installed Packages</button>
-				<button id="customSettings">Custom Settings</button>
-				<button id="customMetadata">Custom Metadata Types</button>
-				<button id="staticResources">Static Resources</button>
 				<button id="companyInformation">Company Information</button>
+				<button id="customLabels">Custom Labels</button>
+				<button id="customMetadata">Custom Metadata Types</button>
+				<button id="customSettings">Custom Settings</button>
+				<button id="importWizard">Data Import Wizard</button>
+				<button id="enhancedProfile">Enhanced Profile</button>
 				<button id="forecastFiscalYear">Fiscal Year</button>
+				<button id="installedPackages">Installed Packages</button>
+				<button id="flexiPageList">Lightning App Builder</button>
+				<button id="components">Lightning Components</button>
+				<button id="permissionSets">Permission Sets</button>
+				<button id="profile">Profile</button>
+				<button id="schemaBuilder">SchemaBuilder</button>
+				<button id="staticResources">Static Resources</button>
+				<button id="tabs">Tabs</button>
+				<button id="themesBranding">Themes & Branding</button>
+				<button id="users">Users</button>
 			</div>
 		</div>
 		<div class="sObject">
 			<div class="Account">
-				<p>Account</p>
+				<input class="objLabel" type="text" id="account" />
 				<button id="accountNew">New</button>
 				<button id="accountList">List</button>
-				<button id="accountDetails">Details</button>
+				<button id="accountDetails">Edit</button>
 			</div>
 			<div class="Contact">
-				<p>Contact</p>
+				<input class="objLabel" type="text" id="contact" />
 				<button id="contactNew">New</button>
 				<button id="contactList">List</button>
-				<button id="contactDetails">Details</button>
+				<button id="contactDetails">Edit</button>
 			</div>
 			<div class="Opportunity">
-				<p>Opportunity</p>
+				<input class="objLabel" type="text" id="opportunity" />
 				<button id="opportunityNew">New</button>
 				<button id="opportunityList">List</button>
-				<button id="opportunityDetails">Details</button>
+				<button id="opportunityDetails">Edit</button>
 			</div>
 			<div class="Lead">
-				<p>Lead</p>
+				<input class="objLabel" type="text" id="lead" />
 				<button id="leadNew">New</button>
 				<button id="leadList">List</button>
-				<button id="leadDetails">Details</button>
+				<button id="leadDetails">Edit</button>
 			</div>
 			<div class="Case">
-				<p>Case</p>
+				<input class="objLabel" type="text" id="cases" />
 				<button id="caseNew">New</button>
 				<button id="caseList">List</button>
-				<button id="caseDetails">Details</button>
+				<button id="caseDetails">Edit</button>
 			</div>
 			<div class="Task">
-				<p>Task</p>
+				<input class="objLabel" type="text" id="task" />
 				<button id="taskNew">New</button>
 				<button id="taskList">List</button>
-				<button id="taskDetails">Details</button>
+				<button id="taskDetails">Edit</button>
 			</div>
 		</div>
 		<hr />

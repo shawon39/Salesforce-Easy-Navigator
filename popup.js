@@ -103,4 +103,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	btnClickFuc(taskList);
 	let taskDetails = document.getElementById("taskDetails");
 	btnClickFuc(taskDetails);
+
+	// Get and Set Object Name
+	getSetObjectName();
 });

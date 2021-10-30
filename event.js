@@ -7,24 +7,11 @@ btnClickFuc = (btnClick) => {
 	}
 };
 
-orgDetermine = (baseUrl) => {
-	if (baseUrl.includes("dev-ed.lightning.force.com")) {
-		return 1;
-	} else if (baseUrl.includes("dev-ed.my.salesforce.com")) {
-		return 2;
-	} else if (baseUrl.includes("dev.lightning.force.com")) {
-		return 3;
-	} else if (baseUrl.includes("dev.my.salesforce.com")) {
-		return 4;
-	}
-};
-
 async function getCurrentTab(page) {
 	let queryOptions = { active: true, currentWindow: true };
 	let [tab] = await chrome.tabs.query(queryOptions);
 	let fullUrl = tab.url;
 	let baseUrl = fullUrl.substring(0, fullUrl.indexOf("/", 10));
-	// let orgType = orgDetermine(baseUrl);
 	if (baseUrl.includes("force.com")) {
 		openUrl(baseUrl, page);
 	}
