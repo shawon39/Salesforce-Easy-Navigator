@@ -121,5 +121,11 @@ openUrl = (baseUrl, page) => {
 		chrome.tabs.create({ active: true, url: baseUrl + openCompanyInformation() });
 	} else if (page === "forecastFiscalYear") {
 		chrome.tabs.create({ active: true, url: baseUrl + openForecastFiscalYear() });
+	} else if (page === "inboundChangeSet") {
+		chrome.tabs.create({ active: true, url: baseUrl + openInboundChangeSet() });
+	} else if (page === "outboundChangeSet") {
+		chrome.tabs.create({ active: true, url: baseUrl + openOutboundChangeSet() });
+	} else if (page === "scheduledJobs") {
+		chrome.tabs.create({ active: true, url: baseUrl + openScheduledJobs() });
 	}
 };

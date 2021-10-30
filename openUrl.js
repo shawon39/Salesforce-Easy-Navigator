@@ -150,3 +150,12 @@ openCompanyInformation = () => {
 openForecastFiscalYear = () => {
 	return "/lightning/setup/ForecastFiscalYear/home";
 };
+openInboundChangeSet = () => {
+	return "/lightning/setup/InboundChangeSet/home";
+};
+openOutboundChangeSet = () => {
+	return "/lightning/setup/OutboundChangeSet/home";
+};
+openScheduledJobs = () => {
+	return "/lightning/setup/ScheduledJobs/home";
+};

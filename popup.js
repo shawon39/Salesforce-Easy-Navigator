@@ -65,6 +65,12 @@ document.addEventListener("DOMContentLoaded", () => {
 	btnClickFuc(companyInformation);
 	let forecastFiscalYear = document.getElementById("forecastFiscalYear");
 	btnClickFuc(forecastFiscalYear);
+	let inboundChangeSet = document.getElementById("inboundChangeSet");
+	btnClickFuc(inboundChangeSet);
+	let outboundChangeSet = document.getElementById("outboundChangeSet");
+	btnClickFuc(outboundChangeSet);
+	let scheduledJobs = document.getElementById("scheduledJobs");
+	btnClickFuc(scheduledJobs);
 
 	// sObject
 	let accountNew = document.getElementById("accountNew");
