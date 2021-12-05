@@ -3,7 +3,8 @@
 	<head>
 		<link rel="stylesheet" href="styles.css" />
 		<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&display=swap" rel="stylesheet" />
-		<script src="popup.js"></script>
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"/>
+ 		<script src="popup.js"></script>
 		<script src="openUrl.js"></script>
 		<script src="event.js"></script>
 		<script src="keyupEvent.js"></script>
@@ -29,73 +30,89 @@
 				<button id="approvalProcesses">Approval Process</button>
 			</div>
 		</div>
-		<div class="commonThings">
+		<div class="bookmarks">
 			<div>
-				<p>Some Common Tools</p>
+				<p>Bookmarks Tools</p>
 			</div>
-			<div class="commonThingsList">
-				<button id="apexClasses">Apex Classes</button>
-				<button id="apexTriggers">Apex Triggers</button>
-				<button id="appManager">App Manager</button>
-				<button id="emailTemplate">Classic Email Templates</button>
-				<button id="companyInformation">Company Information</button>
-				<button id="customLabels">Custom Labels</button>
-				<button id="customMetadata">Custom Metadata Types</button>
-				<button id="customSettings">Custom Settings</button>
-				<button id="importWizard">Data Import Wizard</button>
-				<button id="enhancedProfile">Enhanced Profile</button>
-				<button id="forecastFiscalYear">Fiscal Year</button>
-				<button id="inboundChangeSet">Inbound Change Sets</button>
-				<button id="installedPackages">Installed Packages</button>
-				<button id="flexiPageList">Lightning App Builder</button>
-				<button id="components">Lightning Components</button>
-				<button id="outboundChangeSet">Outbound Change Sets</button>
-				<button id="permissionSets">Permission Sets</button>
-				<button id="profile">Profile</button>
-				<button id="schemaBuilder">SchemaBuilder</button>
-				<button id="scheduledJobs">ScheduledJobs</button>
-				<button id="staticResources">Static Resources</button>
-				<button id="tabs">Tabs</button>
-				<button id="themesBranding">Themes & Branding</button>
-				<button id="users">Users</button>
+			<div class="bookmarksList">
+				<div>
+					<input type="text" id="bkTitle1" />
+					<input type="text" id="bklink1" />
+					<button id="navigate1"><i class="fas fa-arrow-circle-right"></i></button>
+				</div>
+				<div>
+					<input type="text" id="bkTitle2" />
+					<input type="text" id="bklink2" />
+					<button id="navigate2"><i class="fas fa-arrow-circle-right"></i></button>
+				</div>
+				<div>
+					<input type="text" id="bkTitle3" />
+					<input type="text" id="bklink3" />
+					<button id="navigate3"><i class="fas fa-arrow-circle-right"></i></button>
+				</div>
+				<div>
+					<input type="text" id="bkTitle4" />
+					<input type="text" id="bklink4" />
+					<button id="navigate4"><i class="fas fa-arrow-circle-right"></i></button>
+				</div>
+				<div>
+					<input type="text" id="bkTitle5" />
+					<input type="text" id="bklink5" />
+					<button id="navigate5"><i class="fas fa-arrow-circle-right"></i></button>
+				</div>
+				<div>
+					<input type="text" id="bkTitle6" />
+					<input type="text" id="bklink6" />
+					<button id="navigate6"><i class="fas fa-arrow-circle-right"></i></button>
+				</div>
+				<div>
+					<input type="text" id="bkTitle7" />
+					<input type="text" id="bklink7" />
+					<button id="navigate7"><i class="fas fa-arrow-circle-right"></i></button>
+				</div>
+				<div>
+					<input type="text" id="bkTitle8" />
+					<input type="text" id="bklink8" />
+					<button id="navigate8"><i class="fas fa-arrow-circle-right"></i></button>
+				</div>
 			</div>
 		</div>
 		<div class="sObject">
 			<div class="Account">
 				<input class="objLabel" type="text" id="account" />
-				<button id="accountNew">New</button>
-				<button id="accountList">List</button>
-				<button id="accountDetails">Edit</button>
+				<button id="accountNew"><i class="fas fa-plus"></i></button>
+				<button id="accountList"><i class="fas fa-list"></i></button>
+				<button id="accountDetails"><i class="fas fa-edit"></i></button>
 			</div>
 			<div class="Contact">
 				<input class="objLabel" type="text" id="contact" />
-				<button id="contactNew">New</button>
-				<button id="contactList">List</button>
-				<button id="contactDetails">Edit</button>
+				<button id="contactNew"><i class="fas fa-plus"></i></button>
+				<button id="contactList"><i class="fas fa-list"></i></button>
+				<button id="contactDetails"><i class="fas fa-edit"></i></button>
 			</div>
 			<div class="Opportunity">
 				<input class="objLabel" type="text" id="opportunity" />
-				<button id="opportunityNew">New</button>
-				<button id="opportunityList">List</button>
-				<button id="opportunityDetails">Edit</button>
+				<button id="opportunityNew"><i class="fas fa-plus"></i></button>
+				<button id="opportunityList"><i class="fas fa-list"></i></button>
+				<button id="opportunityDetails"><i class="fas fa-edit"></i></button>
 			</div>
 			<div class="Lead">
 				<input class="objLabel" type="text" id="lead" />
-				<button id="leadNew">New</button>
-				<button id="leadList">List</button>
-				<button id="leadDetails">Edit</button>
+				<button id="leadNew"><i class="fas fa-plus"></i></button>
+				<button id="leadList"><i class="fas fa-list"></i></button>
+				<button id="leadDetails"><i class="fas fa-edit"></i></button>
 			</div>
 			<div class="Case">
 				<input class="objLabel" type="text" id="cases" />
-				<button id="caseNew">New</button>
-				<button id="caseList">List</button>
-				<button id="caseDetails">Edit</button>
+				<button id="caseNew"><i class="fas fa-plus"></i></button>
+				<button id="caseList"><i class="fas fa-list"></i></button>
+				<button id="caseDetails"><i class="fas fa-edit"></i></button>
 			</div>
 			<div class="Task">
 				<input class="objLabel" type="text" id="task" />
-				<button id="taskNew">New</button>
-				<button id="taskList">List</button>
-				<button id="taskDetails">Edit</button>
+				<button id="taskNew"><i class="fas fa-plus"></i></button>
+				<button id="taskList"><i class="fas fa-list"></i></button>
+				<button id="taskDetails"><i class="fas fa-edit"></i></button>
 			</div>
 		</div>
 		<hr />

@@ -22,7 +22,7 @@ body {
 	width: 46px;
 }
 .Automation > div > p,
-.commonThings > div > p {
+.bookmarks > div > p {
 	font-weight: 600;
 	text-align: center;
 	color: cadetblue;
@@ -38,13 +38,13 @@ body {
 	width: 115px;
 }
 .Automation,
-.commonThings,
+.bookmarks,
 .sObject {
 	margin-top: -6px;
 }
-.commonThingsList {
+.bookmarksList {
 	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-columns: 1fr;
 	grid-gap: 5px;
 }
 .social {
@@ -100,16 +100,50 @@ textarea:focus,
 select:focus {
 	outline: none;
 }
-input:focus {
+.sObject input:focus {
 	transform: scale(1.1);
 	color: #000 !important;
 }
 .sObject > div > input[type="text"] {
 	font-weight: 500;
 	text-align: center;
-	color: cadetblue;
 	font-size: 12px;
 	height: 10px;
 	border: 1px solid darkgrey;
 	padding: 5px 0px;
 }
+
+.bookmarksList > div {
+	display: flex;
+	gap: 5px;
+}
+
+.bookmarksList > div > button {
+    width: 130px;
+}
+
+.bookmarksList > div > input[type="text"] {
+	font-weight: 500;
+	font-size: 12px;
+	height: 10px;
+	border: 1px solid darkgrey;
+	padding: 5px 0px;
+	text-indent: 2px;
+}
+
+.bookmarksList > div > input[type="text"]:first-child {
+	width: 175px;
+}
+
+.bookmarksList > div > input[type="text"]:nth-child(2) {
+	color: gray;
+}
+
+.bookmarksList button:hover {
+	transform: scale(1);
+}
+
+.sObject button > i,
+.bookmarksList button > i {
+    pointer-events: none
+} 

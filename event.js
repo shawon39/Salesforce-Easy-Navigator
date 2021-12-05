@@ -14,6 +14,8 @@ async function getCurrentTab(page) {
 	let baseUrl = fullUrl.substring(0, fullUrl.indexOf("/", 10));
 	if (baseUrl.includes("force.com")) {
 		openUrl(baseUrl, page);
+	} else {
+		alert("You are not on a Salesforce page!");
 	}
 }
 
@@ -76,56 +78,22 @@ openUrl = (baseUrl, page) => {
 	} else if (page === "approvalProcesses") {
 		chrome.tabs.create({ active: true, url: baseUrl + openApprovalProcesses() });
 	}
-	// Some Common Tools
-	else if (page === "profile") {
-		chrome.tabs.create({ active: true, url: baseUrl + openProfile() });
-	} else if (page === "enhancedProfile") {
-		chrome.tabs.create({ active: true, url: baseUrl + openEnhancedProfile() });
-	} else if (page === "tabs") {
-		chrome.tabs.create({ active: true, url: baseUrl + openTabs() });
-	} else if (page === "appManager") {
-		chrome.tabs.create({ active: true, url: baseUrl + openAppManager() });
-	} else if (page === "flexiPageList") {
-		chrome.tabs.create({ active: true, url: baseUrl + openFlexiPageList() });
-	} else if (page === "components") {
-		chrome.tabs.create({ active: true, url: baseUrl + openComponents() });
-	} else if (page === "customLabels") {
-		chrome.tabs.create({ active: true, url: baseUrl + openCustomLabels() });
-	} else if (page === "importWizard") {
-		chrome.tabs.create({ active: true, url: baseUrl + openImportWizard() });
-	} else if (page === "schemaBuilder") {
-		chrome.tabs.create({ active: true, url: baseUrl + openSchemaBuilder() });
-	} else if (page === "themesBranding") {
-		chrome.tabs.create({ active: true, url: baseUrl + openThemesBranding() });
-	} else if (page === "apexClasses") {
-		chrome.tabs.create({ active: true, url: baseUrl + openApexClasses() });
-	} else if (page === "apexTriggers") {
-		chrome.tabs.create({ active: true, url: baseUrl + openApexTriggers() });
-	} else if (page === "apexJobs") {
-		chrome.tabs.create({ active: true, url: baseUrl + openApexJobs() });
-	} else if (page === "users") {
-		chrome.tabs.create({ active: true, url: baseUrl + openUsers() });
-	} else if (page === "emailTemplate") {
-		chrome.tabs.create({ active: true, url: baseUrl + openEmailTemplate() });
-	} else if (page === "permissionSets") {
-		chrome.tabs.create({ active: true, url: baseUrl + openPermissionSets() });
-	} else if (page === "installedPackages") {
-		chrome.tabs.create({ active: true, url: baseUrl + openInstalledPackages() });
-	} else if (page === "customSettings") {
-		chrome.tabs.create({ active: true, url: baseUrl + openCustomSettings() });
-	} else if (page === "customMetadata") {
-		chrome.tabs.create({ active: true, url: baseUrl + openCustomMetadata() });
-	} else if (page === "staticResources") {
-		chrome.tabs.create({ active: true, url: baseUrl + openStaticResources() });
-	} else if (page === "companyInformation") {
-		chrome.tabs.create({ active: true, url: baseUrl + openCompanyInformation() });
-	} else if (page === "forecastFiscalYear") {
-		chrome.tabs.create({ active: true, url: baseUrl + openForecastFiscalYear() });
-	} else if (page === "inboundChangeSet") {
-		chrome.tabs.create({ active: true, url: baseUrl + openInboundChangeSet() });
-	} else if (page === "outboundChangeSet") {
-		chrome.tabs.create({ active: true, url: baseUrl + openOutboundChangeSet() });
-	} else if (page === "scheduledJobs") {
-		chrome.tabs.create({ active: true, url: baseUrl + openScheduledJobs() });
+	// Bookmarks
+	else if (page === "navigate1") {
+		chrome.tabs.create({ active: true, url: baseUrl + openNavigate1() });
+	} else if (page === "navigate2") {
+		chrome.tabs.create({ active: true, url: baseUrl + openNavigate2() });
+	} else if (page === "navigate3") {
+		chrome.tabs.create({ active: true, url: baseUrl + openNavigate3() });
+	} else if (page === "navigate4") {
+		chrome.tabs.create({ active: true, url: baseUrl + openNavigate4() });
+	} else if (page === "navigate5") {
+		chrome.tabs.create({ active: true, url: baseUrl + openNavigate5() });
+	} else if (page === "navigate6") {
+		chrome.tabs.create({ active: true, url: baseUrl + openNavigate6() });
+	} else if (page === "navigate7") {
+		chrome.tabs.create({ active: true, url: baseUrl + openNavigate7() });
+	} else if (page === "navigate8") {
+		chrome.tabs.create({ active: true, url: baseUrl + openNavigate8() });
 	}
 };

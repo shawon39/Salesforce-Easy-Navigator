@@ -83,79 +83,28 @@ openWorkflowRules = () => {
 openApprovalProcesses = () => {
 	return "/lightning/setup/ApprovalProcesses/home";
 };
-// Some common Tools
-openProfile = () => {
-	return "/lightning/setup/Profiles/home";
-};
-openEnhancedProfile = () => {
-	return "/lightning/setup/EnhancedProfiles/home";
-};
-openTabs = () => {
-	return "/lightning/setup/CustomTabs/home";
-};
-openAppManager = () => {
-	return "/lightning/setup/NavigationMenus/home";
-};
-openFlexiPageList = () => {
-	return "/lightning/setup/FlexiPageList/home";
-};
-openComponents = () => {
-	return "/lightning/setup/LightningComponentBundles/home";
-};
-openCustomLabels = () => {
-	return "/lightning/setup/ExternalStrings/home";
-};
-openImportWizard = () => {
-	return "/lightning/setup/DataManagementDataImporter/home";
-};
-openSchemaBuilder = () => {
-	return "/lightning/setup/SchemaBuilder/home";
-};
-openThemesBranding = () => {
-	return "/lightning/setup/ThemingAndBranding/home";
-};
-openApexClasses = () => {
-	return "/lightning/setup/ApexClasses/home";
-};
-openApexTriggers = () => {
-	return "/lightning/setup/ApexTriggers/home";
-};
-openApexJobs = () => {
-	return "/lightning/setup/AsyncApexJobs/home";
-};
-openUsers = () => {
-	return "/lightning/setup/ManageUsers/home";
-};
-openEmailTemplate = () => {
-	return "/lightning/setup/CommunicationTemplatesEmail/home";
-};
-openPermissionSets = () => {
-	return "/lightning/setup/PermSets/home";
-};
-openInstalledPackages = () => {
-	return "/lightning/setup/ImportedPackage/home";
-};
-openCustomSettings = () => {
-	return "/lightning/setup/CustomSettings/home";
-};
-openCustomMetadata = () => {
-	return "/lightning/setup/CustomMetadata/home";
-};
-openStaticResources = () => {
-	return "/lightning/setup/StaticResources/home";
-};
-openCompanyInformation = () => {
-	return "/lightning/setup/CompanyProfileInfo/home";
-};
-openForecastFiscalYear = () => {
-	return "/lightning/setup/ForecastFiscalYear/home";
-};
-openInboundChangeSet = () => {
-	return "/lightning/setup/InboundChangeSet/home";
-};
-openOutboundChangeSet = () => {
-	return "/lightning/setup/OutboundChangeSet/home";
-};
-openScheduledJobs = () => {
-	return "/lightning/setup/ScheduledJobs/home";
-};
+// Bookmarks
+openNavigate1 = () => {
+	return getValue("bklink1");
+}
+openNavigate2 = () => {	
+	return getValue("bklink2");
+}
+openNavigate3 = () => {
+	return getValue("bklink3");
+}
+openNavigate4 = () => {
+	return getValue("bklink4");
+}
+openNavigate5 = () => {
+	return getValue("bklink5");
+}
+openNavigate6 = () => {
+	return getValue("bklink6");
+}
+openNavigate7 = () => {
+	return getValue("bklink7");
+}
+openNavigate8 = () => {
+	return getValue("bklink8");
+}

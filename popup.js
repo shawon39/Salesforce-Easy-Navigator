@@ -21,56 +21,22 @@ document.addEventListener("DOMContentLoaded", () => {
 	btnClickFuc(approvalProcesses);
 
 	// Common Tools
-	let profile = document.getElementById("profile");
-	btnClickFuc(profile);
-	let enhancedProfile = document.getElementById("enhancedProfile");
-	btnClickFuc(enhancedProfile);
-	let tabs = document.getElementById("tabs");
-	btnClickFuc(tabs);
-	let appManager = document.getElementById("appManager");
-	btnClickFuc(appManager);
-	let flexiPageList = document.getElementById("flexiPageList");
-	btnClickFuc(flexiPageList);
-	let components = document.getElementById("components");
-	btnClickFuc(components);
-	let customLabels = document.getElementById("customLabels");
-	btnClickFuc(customLabels);
-	let importWizard = document.getElementById("importWizard");
-	btnClickFuc(importWizard);
-	let schemaBuilder = document.getElementById("schemaBuilder");
-	btnClickFuc(schemaBuilder);
-	let themesBranding = document.getElementById("themesBranding");
-	btnClickFuc(themesBranding);
-	let apexClasses = document.getElementById("apexClasses");
-	btnClickFuc(apexClasses);
-	let apexTriggers = document.getElementById("apexTriggers");
-	btnClickFuc(apexTriggers);
-	let apexJobs = document.getElementById("apexJobs");
-	btnClickFuc(apexJobs);
-	let users = document.getElementById("users");
-	btnClickFuc(users);
-	let emailTemplate = document.getElementById("emailTemplate");
-	btnClickFuc(emailTemplate);
-	let permissionSets = document.getElementById("permissionSets");
-	btnClickFuc(permissionSets);
-	let installedPackages = document.getElementById("installedPackages");
-	btnClickFuc(installedPackages);
-	let customSettings = document.getElementById("customSettings");
-	btnClickFuc(customSettings);
-	let customMetadata = document.getElementById("customMetadata");
-	btnClickFuc(customMetadata);
-	let staticResources = document.getElementById("staticResources");
-	btnClickFuc(staticResources);
-	let companyInformation = document.getElementById("companyInformation");
-	btnClickFuc(companyInformation);
-	let forecastFiscalYear = document.getElementById("forecastFiscalYear");
-	btnClickFuc(forecastFiscalYear);
-	let inboundChangeSet = document.getElementById("inboundChangeSet");
-	btnClickFuc(inboundChangeSet);
-	let outboundChangeSet = document.getElementById("outboundChangeSet");
-	btnClickFuc(outboundChangeSet);
-	let scheduledJobs = document.getElementById("scheduledJobs");
-	btnClickFuc(scheduledJobs);
+	let navigate1 = document.getElementById("navigate1");
+	btnClickFuc(navigate1);
+	let navigate2 = document.getElementById("navigate2");
+	btnClickFuc(navigate2);
+	let navigate3 = document.getElementById("navigate3");
+	btnClickFuc(navigate3);
+	let navigate4 = document.getElementById("navigate4");
+	btnClickFuc(navigate4);
+	let navigate5 = document.getElementById("navigate5");
+	btnClickFuc(navigate5);
+	let navigate6 = document.getElementById("navigate6");
+	btnClickFuc(navigate6);
+	let navigate7 = document.getElementById("navigate7");
+	btnClickFuc(navigate7);
+	let navigate8 = document.getElementById("navigate8");
+	btnClickFuc(navigate8);
 
 	// sObject
 	let accountNew = document.getElementById("accountNew");
@@ -111,5 +77,5 @@ document.addEventListener("DOMContentLoaded", () => {
 	btnClickFuc(taskDetails);
 
 	// Get and Set Object Name
-	getSetObjectName();
+	getSetVariableName();
 });
