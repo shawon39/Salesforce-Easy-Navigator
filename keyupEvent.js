@@ -15,8 +15,32 @@ let getSetVariableEvent = (myEvent, mayVariable, defaultVal) => {
 	}
 }
 
+// Reset all data
+resetAll = () => {
+	let reset = document.getElementById("reset");
+	reset.addEventListener("click", (event) => {
+		chrome.storage.sync.remove([
+			'account', 'contact', 'opportunity',
+			'lead', 'task', 'case',
+			'bkTitle1', 'bklink1',
+			'bkTitle2', 'bklink2',
+			'bkTitle3', 'bklink3',
+			'bkTitle4', 'bklink4',
+			'bkTitle5', 'bklink5',
+			'bkTitle6', 'bklink6',
+			'bkTitle7', 'bklink7',
+			'bkTitle8', 'bklink8',
+			'bkTitle9', 'bklink9',
+			'bkTitle10', 'bklink10',
+		]);
+		// chrome.storage.sync.clear();
+	});
+}
+
 // getSetVariableName
 let getSetVariableName = () => {
+	/* Resetting the extension */
+	resetAll()
 	/*------- Objects --------*/
 	// Account
 	let account = document.getElementById("account");
@@ -39,50 +63,63 @@ let getSetVariableName = () => {
 	/*------- Bookmarks --------*/
 	// bkTitle1
 	let bkTitle1 = document.getElementById("bkTitle1");
-	getSetVariableEvent(bkTitle1, "bkTitle1", "Installed Packages");
+	getSetVariableEvent(bkTitle1, "bkTitle1", "App Manager");
 	// bklink1
 	let bklink1 = document.getElementById("bklink1");
-	getSetVariableEvent(bklink1, "bklink1", "/lightning/setup/ImportedPackage/home");
+	getSetVariableEvent(bklink1, "bklink1", "/lightning/setup/NavigationMenus/home");
 	// bkTitle2
 	let bkTitle2 = document.getElementById("bkTitle2");
-	getSetVariableEvent(bkTitle2, "bkTitle2", "App Manager");
+	getSetVariableEvent(bkTitle2, "bkTitle2", "Custom Metadata");
 	// bklink2
 	let bklink2 = document.getElementById("bklink2");
-	getSetVariableEvent(bklink2, "bklink2", "/lightning/setup/NavigationMenus/home");
+	getSetVariableEvent(bklink2, "bklink2", "/lightning/setup/CustomMetadata/home");
 	// bkTitle3
 	let bkTitle3 = document.getElementById("bkTitle3");
-	getSetVariableEvent(bkTitle3, "bkTitle3", "Import Wizard");
+	getSetVariableEvent(bkTitle3, "bkTitle3", "Custom Settings");
 	// bklink3
 	let bklink3 = document.getElementById("bklink3");
-	getSetVariableEvent(bklink3, "bklink3", "/lightning/setup/DataManagementDataImporter/home");
+	getSetVariableEvent(bklink3, "bklink3", "/lightning/setup/CustomSettings/home");
 	// bkTitle4
 	let bkTitle4 = document.getElementById("bkTitle4");
-	getSetVariableEvent(bkTitle4, "bkTitle4", "Schema Builder");
+	getSetVariableEvent(bkTitle4, "bkTitle4", "Import Wizard");
 	// bklink4
 	let bklink4 = document.getElementById("bklink4");
-	getSetVariableEvent(bklink4, "bklink4", "/lightning/setup/SchemaBuilder/home");
+	getSetVariableEvent(bklink4, "bklink4", "/lightning/setup/DataManagementDataImporter/home");
 	// bkTitle5
 	let bkTitle5 = document.getElementById("bkTitle5");
-	getSetVariableEvent(bkTitle5, "bkTitle5", "Users");
+	getSetVariableEvent(bkTitle5, "bkTitle5", "Installed Packages");
 	// bklink5
 	let bklink5 = document.getElementById("bklink5");
-	getSetVariableEvent(bklink5, "bklink5", "/lightning/setup/ManageUsers/home");
+	getSetVariableEvent(bklink5, "bklink5", "/lightning/setup/ImportedPackage/home");
 	// bkTitle6
 	let bkTitle6 = document.getElementById("bkTitle6");
-	getSetVariableEvent(bkTitle6, "bkTitle6", "Permission Sets");
+	getSetVariableEvent(bkTitle6, "bkTitle6", "Language Settings");
 	// bklink6
 	let bklink6 = document.getElementById("bklink6");
-	getSetVariableEvent(bklink6, "bklink6", "/lightning/setup/PermSets/home");
+	getSetVariableEvent(bklink6, "bklink6", "/lightning/settings/personal/LanguageAndTimeZone/home");
 	// bkTitle7
 	let bkTitle7 = document.getElementById("bkTitle7");
-	getSetVariableEvent(bkTitle7, "bkTitle7", "Custom Settings");
+	getSetVariableEvent(bkTitle7, "bkTitle7", "Permission Sets");
 	// bklink7
 	let bklink7 = document.getElementById("bklink7");
-	getSetVariableEvent(bklink7, "bklink7", "/lightning/setup/CustomSettings/home");
+	getSetVariableEvent(bklink7, "bklink7", "/lightning/setup/PermSets/home");
 	// bkTitle8
 	let bkTitle8 = document.getElementById("bkTitle8");
-	getSetVariableEvent(bkTitle8, "bkTitle8", "Static Resources");
+	getSetVariableEvent(bkTitle8, "bkTitle8", "Schema Builder");
 	// bklink8
 	let bklink8 = document.getElementById("bklink8");
-	getSetVariableEvent(bklink8, "bklink8", "/lightning/setup/StaticResources/home");
+	getSetVariableEvent(bklink8, "bklink8", "/lightning/setup/SchemaBuilder/home");
+	// bkTitle9
+	let bkTitle9 = document.getElementById("bkTitle9");
+	getSetVariableEvent(bkTitle9, "bkTitle9", "Static Resources");
+	// bklink9
+	let bklink9 = document.getElementById("bklink9");
+	getSetVariableEvent(bklink9, "bklink9", "/lightning/setup/StaticResources/home");
+	// bkTitle10
+	let bkTitle10 = document.getElementById("bkTitle10");
+	getSetVariableEvent(bkTitle10, "bkTitle10", "Users");
+	// bklink10
+	let bklink10 = document.getElementById("bklink10");
+	getSetVariableEvent(bklink10, "bklink10", "/lightning/setup/ManageUsers/home");
 };
+

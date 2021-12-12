@@ -12,7 +12,9 @@ async function getCurrentTab(page) {
 	let [tab] = await chrome.tabs.query(queryOptions);
 	let fullUrl = tab.url;
 	let baseUrl = fullUrl.substring(0, fullUrl.indexOf("/", 10));
-	if (baseUrl.includes("force.com")) {
+	if (baseUrl.includes("lightning.force.com")) {
+		openUrl(baseUrl, page);
+	} else if (baseUrl.includes("my.salesforce.com")) {
 		openUrl(baseUrl, page);
 	} else {
 		alert("You are not on a Salesforce page!");
@@ -27,8 +29,16 @@ openUrl = (baseUrl, page) => {
 		chrome.tabs.create({ active: true, url: baseUrl + openDevConsole() });
 	} else if (page === "objManager") {
 		chrome.tabs.create({ active: true, url: baseUrl + openObjManager() });
-	} else if (page === "language") {
-		chrome.tabs.create({ active: true, url: baseUrl + openLanguage() });
+	} else if (page === "home") {
+		chrome.tabs.create({ active: true, url: baseUrl + openHome() });
+	} else if (page === "processAutomation") {
+		chrome.tabs.create({ active: true, url: baseUrl + openProcessAutomation() });
+	} else if (page === "flows") {
+		chrome.tabs.create({ active: true, url: baseUrl + openFlows() });
+	} else if (page === "workflowRules") {
+		chrome.tabs.create({ active: true, url: baseUrl + openWorkflowRules() });
+	} else if (page === "approvalProcesses") {
+		chrome.tabs.create({ active: true, url: baseUrl + openApprovalProcesses() });
 	}
 	// sObject
 	else if (page === "accountNew") {
@@ -68,16 +78,6 @@ openUrl = (baseUrl, page) => {
 	} else if (page === "taskDetails") {
 		chrome.tabs.create({ active: true, url: baseUrl + openTaskDetail() });
 	}
-	// Automation Tools
-	else if (page === "processAutomation") {
-		chrome.tabs.create({ active: true, url: baseUrl + openProcessAutomation() });
-	} else if (page === "flows") {
-		chrome.tabs.create({ active: true, url: baseUrl + openFlows() });
-	} else if (page === "workflowRules") {
-		chrome.tabs.create({ active: true, url: baseUrl + openWorkflowRules() });
-	} else if (page === "approvalProcesses") {
-		chrome.tabs.create({ active: true, url: baseUrl + openApprovalProcesses() });
-	}
 	// Bookmarks
 	else if (page === "navigate1") {
 		chrome.tabs.create({ active: true, url: baseUrl + openNavigate1() });
@@ -95,5 +95,9 @@ openUrl = (baseUrl, page) => {
 		chrome.tabs.create({ active: true, url: baseUrl + openNavigate7() });
 	} else if (page === "navigate8") {
 		chrome.tabs.create({ active: true, url: baseUrl + openNavigate8() });
+	} else if (page === "navigate9") {
+		chrome.tabs.create({ active: true, url: baseUrl + openNavigate9() });
+	} else if (page === "navigate10") {
+		chrome.tabs.create({ active: true, url: baseUrl + openNavigate10() });
 	}
 };

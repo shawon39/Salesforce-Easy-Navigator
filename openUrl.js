@@ -12,8 +12,21 @@ openDevConsole = () => {
 openObjManager = () => {
 	return "/lightning/setup/ObjectManager/home";
 };
-openLanguage = () => {
-	return "/lightning/settings/personal/LanguageAndTimeZone/home";
+openHome = () => {
+	return "/lightning/page/home";
+};
+// Automation Tools
+openProcessAutomation = () => {
+	return "/lightning/setup/ProcessAutomation/home";
+};
+openFlows = () => {
+	return "/lightning/setup/Flows/home";
+};
+openWorkflowRules = () => {
+	return "/lightning/setup/WorkflowRules/home";
+};
+openApprovalProcesses = () => {
+	return "/lightning/setup/ApprovalProcesses/home";
 };
 // sObject
 openAccountNew = () => {
@@ -70,19 +83,6 @@ openTaskList = () => {
 openTaskDetail = () => {
 	return "/lightning/setup/ObjectManager/" + getValue("task") + "/view";
 };
-// Automation Tools
-openProcessAutomation = () => {
-	return "/lightning/setup/ProcessAutomation/home";
-};
-openFlows = () => {
-	return "/lightning/setup/Flows/home";
-};
-openWorkflowRules = () => {
-	return "/lightning/setup/WorkflowRules/home";
-};
-openApprovalProcesses = () => {
-	return "/lightning/setup/ApprovalProcesses/home";
-};
 // Bookmarks
 openNavigate1 = () => {
 	return getValue("bklink1");
@@ -107,4 +107,10 @@ openNavigate7 = () => {
 }
 openNavigate8 = () => {
 	return getValue("bklink8");
+}
+openNavigate9 = () => {
+	return getValue("bklink9");
+}
+openNavigate10 = () => {
+	return getValue("bklink10");
 }

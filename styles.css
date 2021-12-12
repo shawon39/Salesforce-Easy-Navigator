@@ -1,149 +1,153 @@
 body {
-	width: 480px;
-	height: 535px;
-	font-family: "Nunito", sans-serif;
+  width: 480px;
+  height: 545px;
+  font-family: "Nunito", sans-serif;
+}
+button {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+button {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  border: 1px solid #ddd;
+  font-family: "Nunito", sans-serif;
+  background-color: #e8e8e8;
 }
 .header {
-	text-align: center;
-	font-size: 18px;
-	color: lightslategrey;
+  display: flex;
+  justify-content: center;
+  font-weight: 600;
+  text-align: center;
+  color: lightslategrey;
+}
+.header button {
+  height: 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 10px;
+  width: 40px;
 }
 .mainButtons {
-	display: flex;
-	justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 5px;
 }
 .sObject {
-	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
-	justify-items: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: center;
 }
 .sObject button {
-	margin-left: 1px;
-	width: 46px;
+  margin-left: 1px;
+  width: 46px;
 }
-.Automation > div > p,
 .bookmarks > div > p {
-	font-weight: 600;
-	text-align: center;
-	color: cadetblue;
-	font-size: 13px;
-	height: 10px;
+  font-weight: 600;
+  text-align: center;
+  color: lightslategrey;
+  font-size: 12px;
+  height: 10px;
 }
-.AutomationList {
-	display: flex;
-	justify-content: space-between;
-}
-.AutomationList > button,
 .mainButtons > button {
-	width: 115px;
+  width: 115px;
 }
-.Automation,
 .bookmarks,
 .sObject {
-	margin-top: -6px;
+  margin-top: -6px;
 }
 .bookmarksList {
-	display: grid;
-	grid-template-columns: 1fr;
-	grid-gap: 5px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 5px;
 }
 .social {
-	display: flex;
-	justify-content: space-around;
+  display: flex;
+  justify-content: space-around;
 }
 .social a {
-	text-decoration: none;
-	font-weight: 500;
-	color: lightslategrey;
+  text-decoration: none;
+  font-weight: 500;
+  color: lightslategrey;
 }
 hr {
-	margin-top: 25px;
+  margin-top: 20px;
 }
 .Lead,
 .Case,
 .Task {
-	margin-top: -8px;
+  margin-top: -8px;
 }
 .sObject > div {
-	text-align: center;
+  text-align: center;
 }
 input.objLabel {
-	margin-top: 16px;
-	margin-bottom: 8px;
-	width: 145px;
-	font-size: 12px;
-	text-align: center;
-}
-button {
-	background: none;
-	color: inherit;
-	border: none;
-	padding: 0;
-	font: inherit;
-	cursor: pointer;
-	outline: inherit;
-}
-button {
-	padding-top: 2px;
-	padding-bottom: 2px;
-	border: 1px solid #ddd;
-	font-family: "Nunito", sans-serif;
-	background-color: #e8e8e8;
+  margin-top: 16px;
+  margin-bottom: 8px;
+  width: 145px;
+  font-size: 12px;
+  text-align: center;
 }
 button:hover {
-	color: #fff;
-	background: cadetblue;
-	transform: scale(1.2);
+  color: #fff;
+  background: cadetblue;
+  transform: scale(1.2);
 }
 input:focus,
 textarea:focus,
 select:focus {
-	outline: none;
+  outline: none;
 }
 .sObject input:focus {
-	transform: scale(1.1);
-	color: #000 !important;
+  transform: scale(1.1);
+  color: #000 !important;
 }
 .sObject > div > input[type="text"] {
-	font-weight: 500;
-	text-align: center;
-	font-size: 12px;
-	height: 10px;
-	border: 1px solid darkgrey;
-	padding: 5px 0px;
+  font-weight: 500;
+  text-align: center;
+  font-size: 12px;
+  height: 10px;
+  border: 1px solid darkgrey;
+  padding: 5px 0px;
 }
 
 .bookmarksList > div {
-	display: flex;
-	gap: 5px;
+  display: flex;
+  gap: 5px;
 }
 
 .bookmarksList > div > button {
-    width: 130px;
+  width: 145px;
 }
 
 .bookmarksList > div > input[type="text"] {
-	font-weight: 500;
-	font-size: 12px;
-	height: 10px;
-	border: 1px solid darkgrey;
-	padding: 5px 0px;
-	text-indent: 2px;
+  font-weight: 500;
+  font-size: 12px;
+  height: 10px;
+  border: 1px solid darkgrey;
+  padding: 5px 0px;
+  text-indent: 2px;
 }
 
 .bookmarksList > div > input[type="text"]:first-child {
-	width: 175px;
+  width: 175px;
 }
 
 .bookmarksList > div > input[type="text"]:nth-child(2) {
-	color: gray;
+  color: gray;
 }
 
 .bookmarksList button:hover {
-	transform: scale(1);
+  transform: scale(1);
 }
 
 .sObject button > i,
 .bookmarksList button > i {
-    pointer-events: none
-} 
+  pointer-events: none;
+}

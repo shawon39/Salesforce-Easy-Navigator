@@ -7,8 +7,8 @@ document.addEventListener("DOMContentLoaded", () => {
 	btnClickFuc(devConsole);
 	let objManager = document.getElementById("objManager");
 	btnClickFuc(objManager);
-	let language = document.getElementById("language");
-	btnClickFuc(language);
+	let home = document.getElementById("home");
+	btnClickFuc(home);
 
 	// Automation Tools
 	let processAutomation = document.getElementById("processAutomation");
@@ -37,6 +37,10 @@ document.addEventListener("DOMContentLoaded", () => {
 	btnClickFuc(navigate7);
 	let navigate8 = document.getElementById("navigate8");
 	btnClickFuc(navigate8);
+	let navigate9 = document.getElementById("navigate9");
+	btnClickFuc(navigate9);
+	let navigate10 = document.getElementById("navigate10");
+	btnClickFuc(navigate10);
 
 	// sObject
 	let accountNew = document.getElementById("accountNew");
