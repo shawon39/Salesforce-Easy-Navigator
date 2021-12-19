@@ -7,7 +7,6 @@ let getSetVariableEvent = (myEvent, mayVariable, defaultVal) => {
 		});
 		chrome.storage.sync.get(mayVariable, function (result) {
 			document.getElementById(mayVariable).value = result[mayVariable];
-			console.log(result.mayVariable);
 			if (result[mayVariable] === undefined) {
 				document.getElementById(mayVariable).value = defaultVal;
 			}
@@ -15,32 +14,98 @@ let getSetVariableEvent = (myEvent, mayVariable, defaultVal) => {
 	}
 }
 
-// Reset all data
-resetAll = () => {
-	let reset = document.getElementById("reset");
-	reset.addEventListener("click", (event) => {
+// Set input Value
+let setInputValue = (id, data) => {
+	document.getElementById(id).value = data;
+};
+
+// resetBookmarks value
+let resetBookmarksData = () => {
+	// bookmarks 1
+	setInputValue('bkTitle1', 'App Manager');
+	setInputValue('bklink1', '/lightning/setup/NavigationMenus/home');
+	// bookmarks 2
+	setInputValue('bkTitle2', 'Custom Metadata');
+	setInputValue('bklink2', '/lightning/setup/CustomMetadata/home');
+	// bookmarks 3
+	setInputValue('bkTitle3', 'Custom Settings');
+	setInputValue('bklink3', '/lightning/setup/CustomSettings/home');
+	// bookmarks 4
+	setInputValue('bkTitle4', 'Import Wizard');
+	setInputValue('bklink4', '/lightning/setup/DataManagementDataImporter/home');
+	// bookmarks 5
+	setInputValue('bkTitle5', 'Installed Packages');
+	setInputValue('bklink5', '/lightning/setup/ImportedPackage/home');
+	// bookmarks 6
+	setInputValue('bkTitle6', 'Language Settings');
+	setInputValue('bklink6', '/lightning/settings/personal/LanguageAndTimeZone/home');
+	// bookmarks 7
+	setInputValue('bkTitle7', 'Permission Sets');
+	setInputValue('bklink7', '/lightning/setup/PermSets/home');
+	// bookmarks 8
+	setInputValue('bkTitle8', 'Schema Builder');
+	setInputValue('bklink8', '/lightning/setup/SchemaBuilder/home');
+	// bookmarks 9
+	setInputValue('bkTitle9', 'Static Resources');
+	setInputValue('bklink9', '/lightning/setup/StaticResources/home');
+	// bookmarks 10
+	setInputValue('bkTitle10', 'Users');
+	setInputValue('bklink10', '/lightning/setup/ManageUsers/home');
+};
+
+// resetObject
+let resetObjectData = () => {
+	setInputValue('account', 'Account');
+	setInputValue('contact', 'Contact');
+	setInputValue('opportunity', 'Opportunity');
+	setInputValue('lead', 'Lead');
+	setInputValue('task', 'Task');
+	setInputValue('cases', 'Case');
+};
+
+// Reset data
+resetData = () => {
+	// Reset Bookmarks
+	let resetBookmarks = document.getElementById("resetBookmarks");
+	resetBookmarks.addEventListener("click", () => {
 		chrome.storage.sync.remove([
-			'account', 'contact', 'opportunity',
-			'lead', 'task', 'case',
-			'bkTitle1', 'bklink1',
-			'bkTitle2', 'bklink2',
-			'bkTitle3', 'bklink3',
-			'bkTitle4', 'bklink4',
-			'bkTitle5', 'bklink5',
-			'bkTitle6', 'bklink6',
-			'bkTitle7', 'bklink7',
-			'bkTitle8', 'bklink8',
-			'bkTitle9', 'bklink9',
+			'bkTitle1', 'bklink1', 'bkTitle2', 'bklink2', 'bkTitle3', 'bklink3',
+			'bkTitle4', 'bklink4', 'bkTitle5', 'bklink5', 'bkTitle6', 'bklink6',
+			'bkTitle7', 'bklink7', 'bkTitle8', 'bklink8', 'bkTitle9', 'bklink9',
 			'bkTitle10', 'bklink10',
 		]);
-		// chrome.storage.sync.clear();
+		// resetBookmarks
+		resetBookmarksData();
+	});
+	// Reset Object
+	let resetObject = document.getElementById("resetObject");
+	resetObject.addEventListener("click", () => {
+		chrome.storage.sync.remove([
+			'account', 'contact', 'opportunity', 'lead', 'task', 'cases',
+		]);
+		// Reset Objects
+		resetObjectData();
+	});
+	// Reset All
+	let reset = document.getElementById("reset");
+	reset.addEventListener("click", () => {
+		chrome.storage.sync.remove([
+			'account', 'contact', 'opportunity', 'lead', 'task', 'cases',
+			'bkTitle1', 'bklink1', 'bkTitle2', 'bklink2', 'bkTitle3', 'bklink3',
+			'bkTitle4', 'bklink4', 'bkTitle5', 'bklink5', 'bkTitle6', 'bklink6',
+			'bkTitle7', 'bklink7', 'bkTitle8', 'bklink8', 'bkTitle9', 'bklink9',
+			'bkTitle10', 'bklink10',
+		]);
+		// Reset All
+		resetBookmarksData();
+		resetObjectData();
 	});
 }
 
 // getSetVariableName
 let getSetVariableName = () => {
 	/* Resetting the extension */
-	resetAll()
+	resetData()
 	/*------- Objects --------*/
 	// Account
 	let account = document.getElementById("account");

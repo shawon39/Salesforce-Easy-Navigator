@@ -1,6 +1,6 @@
 body {
   width: 480px;
-  height: 545px;
+  height: 547px;
   font-family: "Nunito", sans-serif;
 }
 button {
@@ -24,20 +24,24 @@ button {
   justify-content: center;
   font-weight: 600;
   text-align: center;
-  color: lightslategrey;
+  color: #0a66c2;
 }
-.header button {
+.header .social {
+  display: flex;
+  justify-content: space-around;
   height: 20px;
   position: absolute;
-  top: 0;
-  left: 0;
+  top: -6px;
+  left: -4px;
   margin: 10px;
-  width: 40px;
+  width: 60px;
+  font-size: 15px;
 }
 .mainButtons {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 5px;
+  font-weight: bold;
 }
 .sObject {
   display: grid;
@@ -51,7 +55,7 @@ button {
 .bookmarks > div > p {
   font-weight: 600;
   text-align: center;
-  color: lightslategrey;
+  color: #0a66c2;
   font-size: 12px;
   height: 10px;
 }
@@ -67,14 +71,12 @@ button {
   grid-template-columns: 1fr;
   grid-gap: 5px;
 }
-.social {
+.reset {
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-start;
 }
-.social a {
-  text-decoration: none;
-  font-weight: 500;
-  color: lightslategrey;
+.reset > button {
+  margin-right: 25px !important;
 }
 hr {
   margin-top: 20px;
@@ -97,7 +99,7 @@ input.objLabel {
 button:hover {
   color: #fff;
   background: cadetblue;
-  transform: scale(1.2);
+  transform: scale(1.1);
 }
 input:focus,
 textarea:focus,
@@ -141,6 +143,7 @@ select:focus {
 
 .bookmarksList > div > input[type="text"]:nth-child(2) {
   color: gray;
+  font-style: italic;
 }
 
 .bookmarksList button:hover {
@@ -150,4 +153,31 @@ select:focus {
 .sObject button > i,
 .bookmarksList button > i {
   pointer-events: none;
+}
+
+.reset button {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  color: #0a66c2;
+}
+
+.reset button:hover {
+  color: #fff;
+  background: cadetblue;
+  transform: scale(1);
+}
+
+.bookmarksList button,
+.sObject button {
+  color: dimgray;
+}
+.bookmarksList button:hover,
+.sObject button:hover {
+  color: #fff;
+  transform: scale(1.1);
 }
