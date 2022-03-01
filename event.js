@@ -12,7 +12,7 @@ async function getCurrentTab(page) {
 	let [tab] = await chrome.tabs.query(queryOptions);
 	let fullUrl = tab.url;
 	let baseUrl = fullUrl.substring(0, fullUrl.indexOf("/", 10));
-	if (baseUrl.includes("lightning.force.com")) {
+	if (baseUrl.includes(".force.com")) {
 		openUrl(baseUrl, page);
 	} else if (baseUrl.includes("my.salesforce.com")) {
 		openUrl(baseUrl, page);
@@ -21,83 +21,129 @@ async function getCurrentTab(page) {
 	}
 }
 
+navigateUrl = (baseUrl, targetUrlFun) => {
+	let switchButton = document.getElementById('switchButton').checked;
+	if (switchButton) {
+		window.open(baseUrl + targetUrlFun(), "_blank");
+	} else {
+		chrome.tabs.query({active:true,currentWindow:true},function(tabs){
+			chrome.tabs.remove(tabs[0].id);
+	   	});
+	   	window.open(baseUrl + targetUrlFun());
+	}
+}
+
 openUrl = (baseUrl, page) => {
+	let switchButton = document.getElementById('switchButton').checked;
 	// Main Tools
 	if (page === "setup") {
-		chrome.tabs.create({ active: true, url: baseUrl + openSetup() });
+		navigateUrl(baseUrl, openSetup);
 	} else if (page === "devConsole") {
-		chrome.tabs.create({ active: true, url: baseUrl + openDevConsole() });
+		navigateUrl(baseUrl, openDevConsole);
 	} else if (page === "objManager") {
-		chrome.tabs.create({ active: true, url: baseUrl + openObjManager() });
+		navigateUrl(baseUrl, openObjManager);
 	} else if (page === "home") {
-		chrome.tabs.create({ active: true, url: baseUrl + openHome() });
+		navigateUrl(baseUrl, openHome);
 	} else if (page === "processAutomation") {
-		chrome.tabs.create({ active: true, url: baseUrl + openProcessAutomation() });
+		navigateUrl(baseUrl, openProcessAutomation);
 	} else if (page === "flows") {
-		chrome.tabs.create({ active: true, url: baseUrl + openFlows() });
+		navigateUrl(baseUrl, openFlows);
 	} else if (page === "workflowRules") {
-		chrome.tabs.create({ active: true, url: baseUrl + openWorkflowRules() });
+		navigateUrl(baseUrl, openWorkflowRules);
 	} else if (page === "approvalProcesses") {
-		chrome.tabs.create({ active: true, url: baseUrl + openApprovalProcesses() });
+		navigateUrl(baseUrl, openApprovalProcesses);
 	}
 	// sObject
 	else if (page === "accountNew") {
-		chrome.tabs.create({ active: true, url: baseUrl + openAccountNew() });
+		navigateUrl(baseUrl, openAccountNew);
 	} else if (page === "accountList") {
-		chrome.tabs.create({ active: true, url: baseUrl + openAccountList() });
+		navigateUrl(baseUrl, openAccountList);
 	} else if (page === "accountDetails") {
-		chrome.tabs.create({ active: true, url: baseUrl + openAccountDetail() });
+		navigateUrl(baseUrl, openAccountDetail);
 	} else if (page === "contactNew") {
-		chrome.tabs.create({ active: true, url: baseUrl + openContactNew() });
+		navigateUrl(baseUrl, openContactNew);
 	} else if (page === "contactList") {
-		chrome.tabs.create({ active: true, url: baseUrl + openContactList() });
+		navigateUrl(baseUrl, openContactList);
 	} else if (page === "contactDetails") {
-		chrome.tabs.create({ active: true, url: baseUrl + openContactDetail() });
+		navigateUrl(baseUrl, openContactDetail);
 	} else if (page === "opportunityNew") {
-		chrome.tabs.create({ active: true, url: baseUrl + openOpportunityNew() });
+		navigateUrl(baseUrl, openOpportunityNew);
 	} else if (page === "opportunityList") {
-		chrome.tabs.create({ active: true, url: baseUrl + openOpportunityList() });
+		navigateUrl(baseUrl, openOpportunityList);
 	} else if (page === "opportunityDetails") {
-		chrome.tabs.create({ active: true, url: baseUrl + openOpportunityDetail() });
+		navigateUrl(baseUrl, openOpportunityDetail);
 	} else if (page === "leadNew") {
-		chrome.tabs.create({ active: true, url: baseUrl + openLeadNew() });
+		navigateUrl(baseUrl, openLeadNew);
 	} else if (page === "leadList") {
-		chrome.tabs.create({ active: true, url: baseUrl + openLeadList() });
+		navigateUrl(baseUrl, openLeadList);
 	} else if (page === "leadDetails") {
-		chrome.tabs.create({ active: true, url: baseUrl + openLeadDetail() });
+		navigateUrl(baseUrl, openLeadDetail);
 	} else if (page === "caseNew") {
-		chrome.tabs.create({ active: true, url: baseUrl + openCaseNew() });
+		navigateUrl(baseUrl, openCaseNew);
 	} else if (page === "caseList") {
-		chrome.tabs.create({ active: true, url: baseUrl + openCaseList() });
+		navigateUrl(baseUrl, openCaseList);
 	} else if (page === "caseDetails") {
-		chrome.tabs.create({ active: true, url: baseUrl + openCaseDetail() });
+		navigateUrl(baseUrl, openCaseDetail);
 	} else if (page === "taskNew") {
-		chrome.tabs.create({ active: true, url: baseUrl + openTaskNew() });
+		navigateUrl(baseUrl, openTaskNew);
 	} else if (page === "taskList") {
-		chrome.tabs.create({ active: true, url: baseUrl + openTaskList() });
+		navigateUrl(baseUrl, openTaskList);
 	} else if (page === "taskDetails") {
-		chrome.tabs.create({ active: true, url: baseUrl + openTaskDetail() });
+		navigateUrl(baseUrl, openTaskDetail);
+	} else if (page === "contractNew") {
+		navigateUrl(baseUrl, openContractNew);
+	} else if (page === "contractList") {
+		navigateUrl(baseUrl, openContractList);
+	} else if (page === "contractDetails") {
+		navigateUrl(baseUrl, openContractDetail);
+	} else if (page === "campaignNew") {
+		navigateUrl(baseUrl, openCampaignNew);
+	} else if (page === "campaignList") {
+		navigateUrl(baseUrl, openCampaignList);
+	} else if (page === "campaignDetails") {
+		navigateUrl(baseUrl, openCampaignDetail);
+	} else if (page === "product2New") {
+		navigateUrl(baseUrl, openProduct2New);
+	} else if (page === "product2List") {
+		navigateUrl(baseUrl, openProduct2List);
+	} else if (page === "product2Details") {
+		navigateUrl(baseUrl, openProduct2Detail);
 	}
 	// Bookmarks
 	else if (page === "navigate1") {
-		chrome.tabs.create({ active: true, url: baseUrl + openNavigate1() });
+		navigateUrl(baseUrl, openNavigate1);
 	} else if (page === "navigate2") {
-		chrome.tabs.create({ active: true, url: baseUrl + openNavigate2() });
+		navigateUrl(baseUrl, openNavigate2);
 	} else if (page === "navigate3") {
-		chrome.tabs.create({ active: true, url: baseUrl + openNavigate3() });
+		navigateUrl(baseUrl, openNavigate3);
 	} else if (page === "navigate4") {
-		chrome.tabs.create({ active: true, url: baseUrl + openNavigate4() });
+		navigateUrl(baseUrl, openNavigate4);
 	} else if (page === "navigate5") {
-		chrome.tabs.create({ active: true, url: baseUrl + openNavigate5() });
+		navigateUrl(baseUrl, openNavigate5);
 	} else if (page === "navigate6") {
-		chrome.tabs.create({ active: true, url: baseUrl + openNavigate6() });
+		navigateUrl(baseUrl, openNavigate6);
 	} else if (page === "navigate7") {
-		chrome.tabs.create({ active: true, url: baseUrl + openNavigate7() });
+		navigateUrl(baseUrl, openNavigate7);
 	} else if (page === "navigate8") {
-		chrome.tabs.create({ active: true, url: baseUrl + openNavigate8() });
+		navigateUrl(baseUrl, openNavigate8);
 	} else if (page === "navigate9") {
-		chrome.tabs.create({ active: true, url: baseUrl + openNavigate9() });
+		navigateUrl(baseUrl, openNavigate9);
 	} else if (page === "navigate10") {
-		chrome.tabs.create({ active: true, url: baseUrl + openNavigate10() });
+		navigateUrl(baseUrl, openNavigate10);
+	}
+};
+
+// switchClickFuc
+switchClickFuc = (btnClick) => {
+	if (btnClick) {
+		btnClick.addEventListener("click", (event) => {
+			if(document.getElementById(event.target.id).checked) {
+				chrome.storage.sync.set({['switchButton']: true });
+				document.getElementById('switchButton').checked = true;
+			} else {
+				chrome.storage.sync.set({['switchButton']: false });
+				document.getElementById('switchButton').checked = false;
+			}
+		});
 	}
 };
