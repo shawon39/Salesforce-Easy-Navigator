@@ -14,6 +14,16 @@ let getSetVariableEvent = (myEvent, mayVariable, defaultVal) => {
 	}
 }
 
+// getSetSwitchButtonValue
+let getSetSwitchButtonValue = () => {
+	chrome.storage.sync.get('switchButton', function (result) {
+		document.getElementById('switchButton').checked = result['switchButton'];
+		if (result['switchButton'] === undefined) {
+			document.getElementById('switchButton').checked = false;
+		}
+	});
+}
+
 // Set input Value
 let setInputValue = (id, data) => {
 	document.getElementById(id).value = data;
@@ -61,6 +71,9 @@ let resetObjectData = () => {
 	setInputValue('lead', 'Lead');
 	setInputValue('task', 'Task');
 	setInputValue('cases', 'Case');
+	setInputValue('contract', 'Contract');
+	setInputValue('campaign', 'Campaign');
+	setInputValue('product2', 'Product2');
 };
 
 // Reset data
@@ -81,7 +94,7 @@ resetData = () => {
 	let resetObject = document.getElementById("resetObject");
 	resetObject.addEventListener("click", () => {
 		chrome.storage.sync.remove([
-			'account', 'contact', 'opportunity', 'lead', 'task', 'cases',
+			'account', 'contact', 'opportunity', 'lead', 'task', 'cases', 'contract', 'campaign', 'product2',
 		]);
 		// Reset Objects
 		resetObjectData();
@@ -90,7 +103,7 @@ resetData = () => {
 	let reset = document.getElementById("reset");
 	reset.addEventListener("click", () => {
 		chrome.storage.sync.remove([
-			'account', 'contact', 'opportunity', 'lead', 'task', 'cases',
+			'account', 'contact', 'opportunity', 'lead', 'task', 'cases', 'contract', 'campaign', 'product2',
 			'bkTitle1', 'bklink1', 'bkTitle2', 'bklink2', 'bkTitle3', 'bklink3',
 			'bkTitle4', 'bklink4', 'bkTitle5', 'bklink5', 'bkTitle6', 'bklink6',
 			'bkTitle7', 'bklink7', 'bkTitle8', 'bklink8', 'bkTitle9', 'bklink9',
@@ -125,6 +138,16 @@ let getSetVariableName = () => {
 	// Task
 	let task = document.getElementById("task");
 	getSetVariableEvent(task, "task", "Task");
+	// Contract
+	let contract = document.getElementById("contract");
+	getSetVariableEvent(contract, "contract", "Contract");
+	// Campaign
+	let campaign = document.getElementById("campaign");
+	getSetVariableEvent(campaign, "campaign", "Campaign");
+	// Product2
+	let product2 = document.getElementById("product2");
+	getSetVariableEvent(product2, "product2", "Product2");
+
 	/*------- Bookmarks --------*/
 	// bkTitle1
 	let bkTitle1 = document.getElementById("bkTitle1");

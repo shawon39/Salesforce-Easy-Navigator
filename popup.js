@@ -79,7 +79,32 @@ document.addEventListener("DOMContentLoaded", () => {
 	btnClickFuc(taskList);
 	let taskDetails = document.getElementById("taskDetails");
 	btnClickFuc(taskDetails);
+	let contractNew = document.getElementById("contractNew");
+	btnClickFuc(contractNew);
+	let contractList = document.getElementById("contractList");
+	btnClickFuc(contractList);
+	let contractDetails = document.getElementById("contractDetails");
+	btnClickFuc(contractDetails);
+	let campaignNew = document.getElementById("campaignNew");
+	btnClickFuc(campaignNew);
+	let campaignList = document.getElementById("campaignList");
+	btnClickFuc(campaignList);
+	let campaignDetails = document.getElementById("campaignDetails");
+	btnClickFuc(campaignDetails);
+	let product2New = document.getElementById("product2New");
+	btnClickFuc(product2New);
+	let product2List = document.getElementById("product2List");
+	btnClickFuc(product2List);
+	let product2Details = document.getElementById("product2Details");
+	btnClickFuc(product2Details);
 
+	// Switch button
+	let switchButton = document.getElementById("switchButton");
+	switchClickFuc(switchButton);
+	
 	// Get and Set Object Name
 	getSetVariableName();
+
+	// Get and Set Switch Button Value
+	getSetSwitchButtonValue();
 });
