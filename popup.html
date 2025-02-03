@@ -1,162 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<link rel="stylesheet" href="styles.css" />
-		<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&display=swap" rel="stylesheet" />
-		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"/>
- 		<script src="popup.js"></script>
-		<script src="openUrl.js"></script>
-		<script src="event.js"></script>
-		<script src="keyupEvent.js"></script>
-	</head>
-	<body>
-		<div class="header">
-			<p>Main Tools - Salesforce Easy Navigator</p>
-			<div class="social">
-				<a href="https://www.linkedin.com/in/shawon39" target="_blank" style="color: #0A66C2">
-					<i class="fab fa-linkedin"></i>
-				</a>
-				<a href="https://www.facebook.com/sh.shawon1" target="_blank" style="color: #0A66C2">
-					<i class="fab fa-facebook"></i>
-				</a>
-				<a href="https://github.com/shawon39" target="_blank">
-					<i class="fab fa-github"></i>
-				</a>
-			</div>
-		</div>
-		<div class="mainButtons">
-			<button id="home">Home</button>
-			<button id="setup">Setup</button>
-			<button id="devConsole">Developer Console</button>
-			<button id="objManager">Object Manager</button>
-			<button id="processAutomation">Process Builder</button>
-			<button id="flows">Flow Builder</button>
-			<button id="workflowRules">WorkFlow</button>
-			<button id="approvalProcesses">Approval Process</button>
-		</div>
-		<div class="bookmarks">
-			<div>
-				<p>Bookmarks Tools</p>
-			</div>
-			<div class="bookmarksList">
-				<div>
-					<input type="text" id="bkTitle1" />
-					<input type="text" id="bklink1" />
-					<button id="navigate1"><i class="fas fa-arrow-circle-right"></i></button>
-				</div>
-				<div>
-					<input type="text" id="bkTitle2" />
-					<input type="text" id="bklink2" />
-					<button id="navigate2"><i class="fas fa-arrow-circle-right"></i></button>
-				</div>
-				<div>
-					<input type="text" id="bkTitle3" />
-					<input type="text" id="bklink3" />
-					<button id="navigate3"><i class="fas fa-arrow-circle-right"></i></button>
-				</div>
-				<div>
-					<input type="text" id="bkTitle4" />
-					<input type="text" id="bklink4" />
-					<button id="navigate4"><i class="fas fa-arrow-circle-right"></i></button>
-				</div>
-				<div>
-					<input type="text" id="bkTitle5" />
-					<input type="text" id="bklink5" />
-					<button id="navigate5"><i class="fas fa-arrow-circle-right"></i></button>
-				</div>
-				<div>
-					<input type="text" id="bkTitle6" />
-					<input type="text" id="bklink6" />
-					<button id="navigate6"><i class="fas fa-arrow-circle-right"></i></button>
-				</div>
-				<div>
-					<input type="text" id="bkTitle7" />
-					<input type="text" id="bklink7" />
-					<button id="navigate7"><i class="fas fa-arrow-circle-right"></i></button>
-				</div>
-				<div>
-					<input type="text" id="bkTitle8" />
-					<input type="text" id="bklink8" />
-					<button id="navigate8"><i class="fas fa-arrow-circle-right"></i></button>
-				</div>
-				<div>
-					<input type="text" id="bkTitle9" />
-					<input type="text" id="bklink9" />
-					<button id="navigate9"><i class="fas fa-arrow-circle-right"></i></button>
-				</div>
-				<div>
-					<input type="text" id="bkTitle10" />
-					<input type="text" id="bklink10" />
-					<button id="navigate10"><i class="fas fa-arrow-circle-right"></i></button>
-				</div>
-			</div>
-		</div>
-		<div class="sObject">
-			<div class="Account">
-				<input class="objLabel" type="text" id="account" />
-				<button id="accountNew"><i class="fas fa-plus"></i></button>
-				<button id="accountList"><i class="fas fa-list"></i></button>
-				<button id="accountDetails"><i class="fas fa-edit"></i></button>
-			</div>
-			<div class="Contact">
-				<input class="objLabel" type="text" id="contact" />
-				<button id="contactNew"><i class="fas fa-plus"></i></button>
-				<button id="contactList"><i class="fas fa-list"></i></button>
-				<button id="contactDetails"><i class="fas fa-edit"></i></button>
-			</div>
-			<div class="Opportunity">
-				<input class="objLabel" type="text" id="opportunity" />
-				<button id="opportunityNew"><i class="fas fa-plus"></i></button>
-				<button id="opportunityList"><i class="fas fa-list"></i></button>
-				<button id="opportunityDetails"><i class="fas fa-edit"></i></button>
-			</div>
-			<div class="Lead">
-				<input class="objLabel" type="text" id="lead" />
-				<button id="leadNew"><i class="fas fa-plus"></i></button>
-				<button id="leadList"><i class="fas fa-list"></i></button>
-				<button id="leadDetails"><i class="fas fa-edit"></i></button>
-			</div>
-			<div class="Case">
-				<input class="objLabel" type="text" id="cases" />
-				<button id="caseNew"><i class="fas fa-plus"></i></button>
-				<button id="caseList"><i class="fas fa-list"></i></button>
-				<button id="caseDetails"><i class="fas fa-edit"></i></button>
-			</div>
-			<div class="Task">
-				<input class="objLabel" type="text" id="task" />
-				<button id="taskNew"><i class="fas fa-plus"></i></button>
-				<button id="taskList"><i class="fas fa-list"></i></button>
-				<button id="taskDetails"><i class="fas fa-edit"></i></button>
-			</div>
-			<div class="Contract">
-				<input class="objLabel" type="text" id="contract" />
-				<button id="contractNew"><i class="fas fa-plus"></i></button>
-				<button id="contractList"><i class="fas fa-list"></i></button>
-				<button id="contractDetails"><i class="fas fa-edit"></i></button>
-			</div>
-			<div class="Campaign">
-				<input class="objLabel" type="text" id="campaign" />
-				<button id="campaignNew"><i class="fas fa-plus"></i></button>
-				<button id="campaignList"><i class="fas fa-list"></i></button>
-				<button id="campaignDetails"><i class="fas fa-edit"></i></button>
-			</div>
-			<div class="Product2">
-				<input class="objLabel" type="text" id="product2" />
-				<button id="product2New"><i class="fas fa-plus"></i></button>
-				<button id="product2List"><i class="fas fa-list"></i></button>
-				<button id="product2Details"><i class="fas fa-edit"></i></button>
-			</div>
-		</div>
-		<hr />
-		<div class="reset">
-			<button id="resetBookmarks">Reset Bookmarks</button>
-			<button id="resetObject">Reset Object</button>
-			<button id="reset">Reset All</button>
-			<span>Open In a New Tab?</span>
-			<label class="switch">
-				<input id="switchButton" type="checkbox" checked>
-				<span class="slider round"></span>
-			</label>
-		</div>
-	</body>
+    <head>
+        <link rel="stylesheet" href="styles.css" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
+        />
+        <script src="popup.js"></script>
+        <script src="openUrl.js"></script>
+        <script src="event.js"></script>
+        <script src="keyupEvent.js"></script>
+        <script src="bookmarks.js"></script>
+    </head>
+    <body>
+        <div class="header">
+            <p></p>
+            <div class="social">
+                <a
+                    href="https://www.linkedin.com/in/shawon39"
+                    target="_blank"
+                    style="color: #0a66c2"
+                >
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://github.com/shawon39" target="_blank">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+        </div>
+        <div class="mainButtons">
+            <button id="home">Home</button>
+            <button id="setup">Setup</button>
+            <button id="devConsole">Developer Console</button>
+            <button id="objManager">Object Manager</button>
+            <button id="flows">Flows</button>
+            <button id="inChangeSets">In Change Sets</button>
+            <button id="outChangeSets">Out Change Sets</button>
+            <button id="users">Users</button>
+        </div>
+
+        <div class="bookmarks">
+            <div>
+                <p>Bookmark Favorite Tools</p>
+            </div>
+            <div id="bookmarksContainer" class="bookmarksList">
+                <!-- Dynamic bookmark items will be inserted here -->
+            </div>
+            <button id="addBookmark">Bookmark This Tab</button>
+        </div>
+
+        <div class="sObject">
+            <div class="Account">
+                <input class="objLabel" type="text" id="account" />
+                <button id="accountNew"><i class="fas fa-plus"></i></button>
+                <button id="accountList"><i class="fas fa-list"></i></button>
+                <button id="accountDetails"><i class="fas fa-edit"></i></button>
+            </div>
+            <div class="Contact">
+                <input class="objLabel" type="text" id="contact" />
+                <button id="contactNew"><i class="fas fa-plus"></i></button>
+                <button id="contactList"><i class="fas fa-list"></i></button>
+                <button id="contactDetails"><i class="fas fa-edit"></i></button>
+            </div>
+            <div class="Opportunity">
+                <input class="objLabel" type="text" id="opportunity" />
+                <button id="opportunityNew"><i class="fas fa-plus"></i></button>
+                <button id="opportunityList">
+                    <i class="fas fa-list"></i>
+                </button>
+                <button id="opportunityDetails">
+                    <i class="fas fa-edit"></i>
+                </button>
+            </div>
+            <div class="Lead">
+                <input class="objLabel" type="text" id="lead" />
+                <button id="leadNew"><i class="fas fa-plus"></i></button>
+                <button id="leadList"><i class="fas fa-list"></i></button>
+                <button id="leadDetails"><i class="fas fa-edit"></i></button>
+            </div>
+            <div class="Case">
+                <input class="objLabel" type="text" id="cases" />
+                <button id="caseNew"><i class="fas fa-plus"></i></button>
+                <button id="caseList"><i class="fas fa-list"></i></button>
+                <button id="caseDetails"><i class="fas fa-edit"></i></button>
+            </div>
+            <div class="Task">
+                <input class="objLabel" type="text" id="task" />
+                <button id="taskNew"><i class="fas fa-plus"></i></button>
+                <button id="taskList"><i class="fas fa-list"></i></button>
+                <button id="taskDetails"><i class="fas fa-edit"></i></button>
+            </div>
+            <div class="Contract">
+                <input class="objLabel" type="text" id="contract" />
+                <button id="contractNew"><i class="fas fa-plus"></i></button>
+                <button id="contractList"><i class="fas fa-list"></i></button>
+                <button id="contractDetails">
+                    <i class="fas fa-edit"></i>
+                </button>
+            </div>
+            <div class="Campaign">
+                <input class="objLabel" type="text" id="campaign" />
+                <button id="campaignNew"><i class="fas fa-plus"></i></button>
+                <button id="campaignList"><i class="fas fa-list"></i></button>
+                <button id="campaignDetails">
+                    <i class="fas fa-edit"></i>
+                </button>
+            </div>
+            <div class="Product2">
+                <input class="objLabel" type="text" id="product2" />
+                <button id="product2New"><i class="fas fa-plus"></i></button>
+                <button id="product2List"><i class="fas fa-list"></i></button>
+                <button id="product2Details">
+                    <i class="fas fa-edit"></i>
+                </button>
+            </div>
+        </div>
+        <hr />
+        <div class="reset">
+            <span>Open In a New Tab?</span>
+            <label class="switch">
+                <input id="switchButtonNG" type="checkbox" checked />
+                <span class="slider round"></span>
+            </label>
+        </div>
+    </body>
 </html>

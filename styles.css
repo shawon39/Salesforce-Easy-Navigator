@@ -1,246 +1,315 @@
 body {
-  width: 480px;
-  height: 583px;
-  font-family: "Nunito", sans-serif;
+    width: 480px;
+    font-family: "Nunito", sans-serif;
 }
 button {
-  background: none;
-  color: inherit;
-  border: none;
-  padding: 0;
-  font: inherit;
-  cursor: pointer;
-  outline: inherit;
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
 }
 button {
-  padding-top: 2px;
-  padding-bottom: 2px;
-  border: 1px solid #ddd;
-  font-family: "Nunito", sans-serif;
-  background-color: #e8e8e8;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    border: 1px solid #ddd;
+    font-family: "Nunito", sans-serif;
+    background-color: #e8e8e8;
 }
 .header {
-  display: flex;
-  justify-content: center;
-  font-weight: 600;
-  text-align: center;
-  color: #0a66c2;
+    display: flex;
+    justify-content: center;
+    font-weight: 600;
+    text-align: center;
+    color: #0a66c2;
 }
 .header .social {
-  display: flex;
-  justify-content: space-around;
-  height: 20px;
-  position: absolute;
-  top: -6px;
-  left: -4px;
-  margin: 10px;
-  width: 60px;
-  font-size: 15px;
+    display: flex;
+    justify-content: space-around;
+    height: 20px;
+    position: absolute;
+    top: -6px;
+    left: -4px;
+    margin: 10px;
+    width: 60px;
+    font-size: 15px;
 }
 .mainButtons {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-gap: 5px;
-  font-weight: bold;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 5px;
+    font-weight: bold;
 }
 .sObject {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  justify-items: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-items: center;
 }
 .sObject button {
-  margin-left: 1px;
-  width: 46px;
+    margin-left: 1px;
+    width: 46px;
 }
 .bookmarks > div > p {
-  font-weight: 600;
-  text-align: center;
-  color: #0a66c2;
-  font-size: 12px;
-  height: 10px;
+    font-weight: 600;
+    text-align: center;
+    color: #0a66c2;
+    font-size: 12px;
+    height: 10px;
 }
 .mainButtons > button {
-  width: 115px;
+    width: 115px;
 }
 .bookmarks,
 .sObject {
-  margin-top: -6px;
+    margin-top: -6px;
 }
 .bookmarksList {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-gap: 2px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 2px;
 }
 .reset {
-  display: flex;
-  justify-content: flex-start;
+    display: flex;
+    justify-content: flex-end;
 }
 .reset > button {
-  margin-right: 25px !important;
+    margin-right: 25px !important;
 }
 hr {
-  margin-top: 12px;
+    margin-top: 12px;
 }
 .Lead,
 .Case,
 .Task {
-  margin-top: -8px;
+    margin-top: -8px;
 }
 .sObject > div {
-  text-align: center;
+    text-align: center;
 }
 input.objLabel {
-  margin-top: 16px;
-  margin-bottom: 8px;
-  width: 145px;
-  font-size: 12px;
-  text-align: center;
+    margin-top: 16px;
+    margin-bottom: 8px;
+    width: 145px;
+    font-size: 12px;
+    text-align: center;
 }
 button:hover {
-  color: #fff;
-  background: cadetblue;
-  transform: scale(1.1);
+    color: #fff;
+    background: cadetblue;
+    transform: scale(1.1);
 }
 input:focus,
 textarea:focus,
 select:focus {
-  outline: none;
+    outline: none;
 }
 .sObject input:focus {
-  transform: scale(1.1);
-  color: #000 !important;
+    transform: scale(1.1);
+    color: #000 !important;
 }
 .sObject > div > input[type="text"] {
-  font-weight: 500;
-  text-align: center;
-  font-size: 12px;
-  height: 10px;
-  border: 1px solid darkgrey;
-  padding: 5px 0px;
+    font-weight: 500;
+    text-align: center;
+    font-size: 12px;
+    height: 10px;
+    border: 1px solid darkgrey;
+    padding: 5px 0px;
 }
 
 .bookmarksList > div {
-  display: flex;
-  gap: 5px;
+    display: flex;
+    gap: 5px;
 }
 
 .bookmarksList > div > button {
-  width: 145px;
+    width: 145px;
 }
 
 .bookmarksList > div > input[type="text"] {
-  font-weight: 500;
-  font-size: 12px;
-  height: 10px;
-  border: 1px solid darkgrey;
-  padding: 5px 0px;
-  text-indent: 2px;
+    font-weight: 500;
+    font-size: 12px;
+    height: 10px;
+    border: 1px solid darkgrey;
+    padding: 5px 0px;
+    text-indent: 2px;
 }
 
 .bookmarksList > div > input[type="text"]:first-child {
-  width: 185px;
+    width: 185px;
 }
 
 .bookmarksList > div > input[type="text"]:nth-child(2) {
-  color: gray;
-  font-style: italic;
+    color: gray;
+    font-style: italic;
 }
 
 .bookmarksList button:hover {
-  transform: scale(1);
+    transform: scale(1);
 }
 
 .sObject button > i,
 .bookmarksList button > i {
-  pointer-events: none;
+    pointer-events: none;
 }
 
 .reset button {
-  background: none;
-  color: inherit;
-  border: none;
-  padding: 0;
-  font: inherit;
-  cursor: pointer;
-  outline: inherit;
-  color: #0a66c2;
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+    color: #0a66c2;
 }
 
 .reset button:hover {
-  color: #fff;
-  background: cadetblue;
-  transform: scale(1);
+    color: #fff;
+    background: cadetblue;
+    transform: scale(1);
 }
 
 .bookmarksList button,
 .sObject button {
-  color: dimgray;
+    color: dimgray;
 }
 .bookmarksList button:hover,
 .sObject button:hover {
-  color: #fff;
-  transform: scale(1.1);
+    color: #fff;
+    transform: scale(1.1);
 }
 
 /* Switch */
 
 .switch {
-  position: relative;
-  display: inline-block;
-  width: 44px;
-  height: 19px;
-  margin-left: 10px;
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 19px;
+    margin-left: 10px;
 }
 
-.switch input { 
-  opacity: 0;
-  width: 0;
-  height: 0;
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
 }
 
 .slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
 }
 
 .slider:before {
-  position: absolute;
-  content: "";
-  height: 19px;
-  width: 19px;
-  left: 0px;
-  bottom: 0.5px;
-  background-color: #4e5156;
-  -webkit-transition: .4s;
-  transition: .4s;
+    position: absolute;
+    content: "";
+    height: 19px;
+    width: 19px;
+    left: 0px;
+    bottom: 0.5px;
+    background-color: #4e5156;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
 }
 
 input:checked + .slider {
-  background-color: lightblue;
+    background-color: lightblue;
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px lightblue;
+    box-shadow: 0 0 1px lightblue;
 }
 
 input:checked + .slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
 }
 
 /* Rounded sliders */
 .slider.round {
-  border-radius: 34px;
+    border-radius: 34px;
 }
 
 .slider.round:before {
-  border-radius: 50%;
+    border-radius: 50%;
+}
+
+.bookmarksList {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.bookmarkItem {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+}
+
+/* Bookmark title occupies 50% of the row */
+.bookmarkTitle {
+    flex: 0 0 50%;
+}
+
+/* Navigate button occupies 25% of the row and centers its content */
+.bookmarkNavigate {
+    flex: 0 0 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Actions container (delete and drag handle) occupies 25% */
+.bookmarkActions {
+    flex: 0 0 25%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+/* Style the Add Bookmark button to appear at the right side */
+#addBookmark {
+    display: block;
+    margin: 10px 0 0 auto; /* top margin of 10px, auto left margin pushes it right */
+    padding: 5px 10px;
+    border-radius: 22px;
+}
+
+/* Styles for the delete button and drag handle icon */
+.bookmarkDelete,
+.dragHandle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+.bookmarkDelete i,
+.dragHandle i {
+    font-size: 13px;
+    color: #555;
+}
+
+.bookmarkDelete:hover i {
+    color: #fff; /* red on hover for delete */
+}
+
+.dragHandle:hover i {
+    color: #888; /* darker on hover for drag icon */
 }
