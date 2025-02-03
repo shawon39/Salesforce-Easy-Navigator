@@ -96,8 +96,17 @@ function navigateBookmark(url) {
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
         let tab = tabs[0];
         let fullUrl = tab.url;
+
+        // Check if the URL includes "/lightning/"
+        if (!fullUrl.includes("/lightning/")) {
+            alert("You are not on a Salesforce page!");
+            return;
+        }
+
+        // Extract base URL from the full URL.
         let baseUrl = fullUrl.substring(0, fullUrl.indexOf("/", 10));
         let switchButtonNG = document.getElementById("switchButtonNG").checked;
+
         if (switchButtonNG) {
             window.open(baseUrl + url, "_blank");
         } else {

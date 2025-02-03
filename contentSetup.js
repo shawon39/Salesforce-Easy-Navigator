@@ -188,7 +188,8 @@ waitForTabBar((tabBar) => {
             }
             // Validation: the tabLink must contain "/lightning/"
             if (!tabLink.includes("/lightning/")) {
-                validationMsg.textContent = 'Please enter a valid tab link that starts with "/lightning/...". For example: /lightning/setup/Flows/home';
+                validationMsg.textContent =
+                    'Please enter a valid tab link that starts with "/lightning/...". For example: /lightning/setup/Flows/home';
                 validationMsg.style.color = "red";
                 return;
             }
@@ -210,7 +211,7 @@ waitForTabBar((tabBar) => {
                 });
             });
         });
-        
+
         btnContainer.appendChild(saveBtn);
 
         const cancelBtn = document.createElement("button");
@@ -273,7 +274,8 @@ waitForTabBar((tabBar) => {
             }
             // Validation: the newLink must contain "/lightning/"
             if (!newLink.includes("/lightning/")) {
-                validationMsg.textContent = 'Please enter a valid tab link that starts with "/lightning/...". For example: /lightning/setup/Flows/home';
+                validationMsg.textContent =
+                    'Please enter a valid tab link that starts with "/lightning/...". For example: /lightning/setup/Flows/home';
                 validationMsg.style.color = "red";
                 return;
             }
@@ -291,7 +293,8 @@ waitForTabBar((tabBar) => {
                 tabs[index] = { name: newName, link: newLink };
                 chrome.storage.sync.set({ sfTabs: tabs }, () => {
                     loadStoredTabs();
-                    const editListContainer = document.getElementById("editModalListNG");
+                    const editListContainer =
+                        document.getElementById("editModalListNG");
                     if (editListContainer) {
                         renderEditList(editListContainer);
                     }
@@ -299,7 +302,7 @@ waitForTabBar((tabBar) => {
                 });
             });
         });
-        
+
         btnContainer.appendChild(saveBtn);
 
         const cancelBtn = document.createElement("button");
