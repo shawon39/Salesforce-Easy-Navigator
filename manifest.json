@@ -1,6 +1,6 @@
 {
     "name": "Salesforce Easy Navigator",
-    "description": "This extension will help you to navigate Salesforce's most used tools",
+    "description": "Salesforce Easy Navigator – One-Click Access to Your Most Used Pages!",
     "version": "2.4.0.0",
     "manifest_version": 3,
     "action": {
