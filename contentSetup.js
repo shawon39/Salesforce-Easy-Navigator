@@ -28,7 +28,14 @@ waitForTabBar((tabBar) => {
     // Each tab is an object: { name: "Friendly Name", link: "/endpoint" }
     function loadStoredTabs() {
         chrome.storage.sync.get({ sfTabs: [] }, (result) => {
-            const tabs = result.sfTabs;
+            let tabs = result.sfTabs;
+
+            // Add the default tab only if no tabs exist.
+            if (tabs.length === 0) {
+                tabs.push({ name: "App Home", link: "/lightning/page/home" });
+                chrome.storage.sync.set({ sfTabs: tabs });
+            }
+
             // Remove all LI elements except the plus and edit buttons.
             Array.from(ul.children).forEach((child) => {
                 if (child.id !== "plusLi" && child.id !== "editLi") {
@@ -52,12 +59,11 @@ waitForTabBar((tabBar) => {
                 // Drag event listeners
                 li.addEventListener("dragstart", (e) => {
                     draggedIndex = Number(li.dataset.index);
-                    // Optionally, add a dragging style
                     li.style.opacity = "0.5";
                     e.dataTransfer.effectAllowed = "move";
                 });
 
-                li.addEventListener("dragend", (e) => {
+                li.addEventListener("dragend", () => {
                     li.style.opacity = "1";
                 });
 
@@ -69,8 +75,7 @@ waitForTabBar((tabBar) => {
                 li.addEventListener("drop", (e) => {
                     e.preventDefault();
                     const targetIndex = Number(li.dataset.index);
-                    if (draggedIndex === null || draggedIndex === targetIndex)
-                        return;
+                    if (draggedIndex === null || draggedIndex === targetIndex) return;
                     // Reorder the tabs array
                     const newTabs = [...tabs];
                     const draggedItem = newTabs.splice(draggedIndex, 1)[0];
@@ -93,6 +98,92 @@ waitForTabBar((tabBar) => {
         });
     }
 
+    // Function to show a custom modal for editing a specific tab's details.
+    function showEditTabModal(index, tab) {
+        const overlay = document.createElement("div");
+        overlay.className = "custom-overlay";
+
+        const modal = document.createElement("div");
+        modal.className = "custom-modal";
+
+        // Tab Name
+        const nameLabel = document.createElement("label");
+        nameLabel.textContent = "Edit Tab Name:";
+        modal.appendChild(nameLabel);
+
+        const nameInput = document.createElement("input");
+        nameInput.type = "text";
+        nameInput.placeholder = "e.g. Flows";
+        // Prepopulate with the existing tab name; remove " | Salesforce" if present.
+        nameInput.value = tab.name.replace(" | Salesforce", "").trim();
+        modal.appendChild(nameInput);
+
+        // Tab Link
+        const linkLabel = document.createElement("label");
+        linkLabel.textContent = "Edit Tab Link:";
+        modal.appendChild(linkLabel);
+
+        const linkInput = document.createElement("input");
+        linkInput.type = "text";
+        linkInput.placeholder = "e.g. /lightning/setup/Flows/home";
+        linkInput.value = tab.link;
+        modal.appendChild(linkInput);
+
+        // Div to show inline validation messages
+        const validationMsg = document.createElement("div");
+        validationMsg.className = "validation-msg";
+        modal.appendChild(validationMsg);
+
+        const btnContainer = document.createElement("div");
+        btnContainer.className = "custom-btn-container";
+
+        const saveBtn = document.createElement("button");
+        saveBtn.textContent = "Save";
+        saveBtn.style.marginRight = "5px";
+        saveBtn.addEventListener("click", () => {
+            let newTabName = nameInput.value.trim();
+            let newTabLink = linkInput.value.trim();
+            if (!newTabName || !newTabLink) {
+                validationMsg.textContent = "Both fields are required.";
+                validationMsg.style.color = "red";
+                return;
+            }
+            // Validate that the newTabLink contains "/lightning"
+            if (!newTabLink.startsWith("/lightning/")) {
+                validationMsg.textContent = 'Tab link must start with "/lightning/"';
+                validationMsg.style.color = "red";
+                return;
+            }
+            chrome.storage.sync.get({ sfTabs: [] }, (result) => {
+                const tabs = result.sfTabs;
+                tabs[index].name = newTabName;
+                tabs[index].link = newTabLink;
+                chrome.storage.sync.set({ sfTabs: tabs }, () => {
+                    loadStoredTabs();
+                    // If the edit modal list is open, update it instantly.
+                    const editListContainer = document.getElementById("editModalListNG");
+                    if (editListContainer) {
+                        renderEditList(editListContainer);
+                    }
+                    document.body.removeChild(overlay);
+                });
+            });
+        });
+        btnContainer.appendChild(saveBtn);
+
+        const cancelBtn = document.createElement("button");
+        cancelBtn.textContent = "Cancel";
+        cancelBtn.style.marginLeft = "5px";
+        cancelBtn.addEventListener("click", () => {
+            document.body.removeChild(overlay);
+        });
+        btnContainer.appendChild(cancelBtn);
+
+        modal.appendChild(btnContainer);
+        overlay.appendChild(modal);
+        document.body.appendChild(overlay);
+    }
+
     // Helper: Render the list inside the Edit modal.
     function renderEditList(container) {
         container.innerHTML = ""; // Clear current content
@@ -112,6 +203,7 @@ waitForTabBar((tabBar) => {
                     span.style.flexGrow = "1";
                     itemDiv.appendChild(span);
 
+                    // Add Edit button beside Delete button
                     const editBtn = document.createElement("button");
                     editBtn.textContent = "Edit";
                     editBtn.style.marginRight = "5px";
@@ -120,20 +212,18 @@ waitForTabBar((tabBar) => {
                     });
                     itemDiv.appendChild(editBtn);
 
-                    const deleteBtn = document.createElement("button");
-                    deleteBtn.textContent = "Delete";
-                    deleteBtn.addEventListener("click", () => {
-                        if (
-                            confirm("Are you sure you want to delete this tab?")
-                        ) {
+                    if (tab.link !== "/lightning/page/home") {
+                        const deleteBtn = document.createElement("button");
+                        deleteBtn.textContent = "Delete";
+                        deleteBtn.addEventListener("click", () => {
                             tabs.splice(index, 1);
                             chrome.storage.sync.set({ sfTabs: tabs }, () => {
                                 renderEditList(container);
                                 loadStoredTabs();
                             });
-                        }
-                    });
-                    itemDiv.appendChild(deleteBtn);
+                        });
+                        itemDiv.appendChild(deleteBtn);
+                    }
 
                     container.appendChild(itemDiv);
                 });
@@ -155,17 +245,10 @@ waitForTabBar((tabBar) => {
 
         const nameInput = document.createElement("input");
         nameInput.type = "text";
-        nameInput.placeholder = "e.g. Flows";
+        nameInput.placeholder = "Enter Tab Name";
+        // Pre-populate the input with the current tab's title; remove " | Salesforce" if present.
+        nameInput.value = document.title.replace(" | Salesforce", "");
         modal.appendChild(nameInput);
-
-        const linkLabel = document.createElement("label");
-        linkLabel.textContent = "Tab Link:";
-        modal.appendChild(linkLabel);
-
-        const linkInput = document.createElement("input");
-        linkInput.type = "text";
-        linkInput.placeholder = "e.g. /lightning/setup/Flows/home";
-        modal.appendChild(linkInput);
 
         // Div to show inline validation messages
         const validationMsg = document.createElement("div");
@@ -180,28 +263,22 @@ waitForTabBar((tabBar) => {
         saveBtn.style.marginRight = "5px";
         saveBtn.addEventListener("click", () => {
             let tabName = nameInput.value.trim();
-            let tabLink = linkInput.value.trim();
-            if (!tabName || !tabLink) {
-                validationMsg.textContent = "Both fields are required.";
+            if (!tabName) {
+                validationMsg.textContent = "Tab name is required.";
                 validationMsg.style.color = "red";
                 return;
             }
-            // Validation: the tabLink must contain "/lightning/"
-            if (!tabLink.includes("/lightning/")) {
-                validationMsg.textContent =
-                    'Please enter a valid tab link that starts with "/lightning/...". For example: /lightning/setup/Flows/home';
+
+            // Automatically extract the tab link from the current URL.
+            const currentUrl = window.location.href;
+            const lightningIndex = currentUrl.indexOf("/lightning");
+            if (lightningIndex === -1) {
+                validationMsg.textContent = "Current URL is not a Lightning page.";
                 validationMsg.style.color = "red";
                 return;
             }
-            // If the user entered a full URL that starts with the base URL, remove the base URL portion.
-            const baseUrl = window.location.origin;
-            if (tabLink.startsWith(baseUrl)) {
-                const index = tabLink.indexOf("/lightning/");
-                if (index !== -1) {
-                    tabLink = tabLink.substring(index);
-                }
-            }
-            validationMsg.textContent = "";
+            const tabLink = currentUrl.substring(lightningIndex);
+
             chrome.storage.sync.get({ sfTabs: [] }, (result) => {
                 const tabs = result.sfTabs;
                 tabs.push({ name: tabName, link: tabLink });
@@ -211,7 +288,6 @@ waitForTabBar((tabBar) => {
                 });
             });
         });
-
         btnContainer.appendChild(saveBtn);
 
         const cancelBtn = document.createElement("button");
@@ -227,98 +303,7 @@ waitForTabBar((tabBar) => {
         document.body.appendChild(overlay);
     }
 
-    // Function to show a custom modal for editing a specific tab.
-    function showEditTabModal(index, tab) {
-        const overlay = document.createElement("div");
-        overlay.className = "custom-overlay";
-
-        const modal = document.createElement("div");
-        modal.className = "custom-modal";
-
-        const nameLabel = document.createElement("label");
-        nameLabel.textContent = "Tab Name:";
-        modal.appendChild(nameLabel);
-
-        const nameInput = document.createElement("input");
-        nameInput.type = "text";
-        nameInput.value = tab.name;
-        modal.appendChild(nameInput);
-
-        const linkLabel = document.createElement("label");
-        linkLabel.textContent = "Tab Link:";
-        modal.appendChild(linkLabel);
-
-        const linkInput = document.createElement("input");
-        linkInput.type = "text";
-        linkInput.value = tab.link;
-        modal.appendChild(linkInput);
-
-        // Div for inline validation messages.
-        const validationMsg = document.createElement("div");
-        validationMsg.className = "validation-msg";
-        modal.appendChild(validationMsg);
-
-        const btnContainer = document.createElement("div");
-        btnContainer.className = "custom-btn-container";
-
-        const saveBtn = document.createElement("button");
-        saveBtn.textContent = "Save";
-        saveBtn.style.marginRight = "5px";
-        saveBtn.addEventListener("click", () => {
-            let newName = nameInput.value.trim();
-            let newLink = linkInput.value.trim();
-            if (!newName || !newLink) {
-                validationMsg.textContent = "Both fields are required.";
-                validationMsg.style.color = "red";
-                return;
-            }
-            // Validation: the newLink must contain "/lightning/"
-            if (!newLink.includes("/lightning/")) {
-                validationMsg.textContent =
-                    'Please enter a valid tab link that starts with "/lightning/...". For example: /lightning/setup/Flows/home';
-                validationMsg.style.color = "red";
-                return;
-            }
-            // If the user entered a full URL that starts with the base URL, remove the base URL portion.
-            const baseUrl = window.location.origin;
-            if (newLink.startsWith(baseUrl)) {
-                const index = newLink.indexOf("/lightning/");
-                if (index !== -1) {
-                    newLink = newLink.substring(index);
-                }
-            }
-            validationMsg.textContent = "";
-            chrome.storage.sync.get({ sfTabs: [] }, (result) => {
-                const tabs = result.sfTabs;
-                tabs[index] = { name: newName, link: newLink };
-                chrome.storage.sync.set({ sfTabs: tabs }, () => {
-                    loadStoredTabs();
-                    const editListContainer =
-                        document.getElementById("editModalListNG");
-                    if (editListContainer) {
-                        renderEditList(editListContainer);
-                    }
-                    document.body.removeChild(overlay);
-                });
-            });
-        });
-
-        btnContainer.appendChild(saveBtn);
-
-        const cancelBtn = document.createElement("button");
-        cancelBtn.textContent = "Cancel";
-        cancelBtn.style.marginLeft = "5px";
-        cancelBtn.addEventListener("click", () => {
-            document.body.removeChild(overlay);
-        });
-        btnContainer.appendChild(cancelBtn);
-
-        modal.appendChild(btnContainer);
-        overlay.appendChild(modal);
-        document.body.appendChild(overlay);
-    }
-
-    // Function to show a modal for editing/deleting all stored tabs.
+    // Function to show a modal for editing/deleting stored tabs.
     function showEditModal() {
         const overlay = document.createElement("div");
         overlay.className = "custom-overlay";
@@ -365,7 +350,7 @@ waitForTabBar((tabBar) => {
         editLi.style.marginLeft = "auto";
 
         const editButton = document.createElement("button");
-        editButton.textContent = "✎";
+        editButton.textContent = "🖊️";
         editButton.addEventListener("click", showEditModal);
         editLi.appendChild(editButton);
         ul.appendChild(editLi);
