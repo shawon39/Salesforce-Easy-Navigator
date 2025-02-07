@@ -19,6 +19,10 @@
     margin: 100px auto;
     border-radius: 4px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    max-height: 80vh;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #888 #f1f1f1;
 }
 
 /* Modal title */
@@ -69,10 +73,19 @@
     margin: 0;
 }
 
-/* Styling for each tab LI */
+#sfNGTabsURL {
+    width: 100%;
+    overflow-x: auto;
+}
+
 #sfNGTabsURL li {
     border-right: 1px solid #ccc;
     cursor: pointer;
+    max-width: 200px;
+    min-width: 30px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 /* Plus and Edit LI items */
