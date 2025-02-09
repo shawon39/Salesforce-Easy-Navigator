@@ -1,61 +1,39 @@
 // getSetVariableEvent
-let getSetVariableEvent = (myEvent, mayVariable, defaultVal) => {
-    if (myEvent) {
-        myEvent.addEventListener("keyup", (event) => {
-            chrome.storage.sync.set({
-                [mayVariable]: event.target.value.trim(),
-            });
-            document.getElementById(mayVariable).value =
-                event.target.value.trim();
+let getSetVariableEvent = (element, variableName, defaultVal) => {
+    if (element) {
+        element.addEventListener("keyup", (event) => {
+            const value = event.target.value.trim();
+            chrome.storage.sync.set({ [variableName]: value });
+            document.getElementById(variableName).value = value;
+            initializeNavigation();
         });
-        chrome.storage.sync.get(mayVariable, function (result) {
-            document.getElementById(mayVariable).value = result[mayVariable];
-            if (result[mayVariable] === undefined) {
-                document.getElementById(mayVariable).value = defaultVal;
-            }
+        chrome.storage.sync.get(variableName, (result) => {
+            const storedVal = result[variableName];
+            document.getElementById(variableName).value =
+                storedVal !== undefined ? storedVal : defaultVal;
         });
     }
 };
 
-// getSetSwitchButtonValue
-let getSetSwitchButtonValue = () => {
-    chrome.storage.sync.get("switchButtonNG", function (result) {
-        document.getElementById("switchButtonNG").checked =
-            result["switchButtonNG"];
-        if (result["switchButtonNG"] === undefined) {
-            document.getElementById("switchButtonNG").checked = false;
-        }
-    });
-};
-
-// getSetVariableName
+// getSetVariableName rewritten using an array of field definitions
 let getSetVariableName = () => {
-    /*------- Objects --------*/
-    // Account
-    let account = document.getElementById("account");
-    getSetVariableEvent(account, "account", "Account");
-    // Contact
-    let contact = document.getElementById("contact");
-    getSetVariableEvent(contact, "contact", "Contact");
-    // Opportunity
-    let opportunity = document.getElementById("opportunity");
-    getSetVariableEvent(opportunity, "opportunity", "Opportunity");
-    // Lead
-    let lead = document.getElementById("lead");
-    getSetVariableEvent(lead, "lead", "Lead");
-    // Case
-    let cases = document.getElementById("cases");
-    getSetVariableEvent(cases, "cases", "Case");
-    // Task
-    let task = document.getElementById("task");
-    getSetVariableEvent(task, "task", "Task");
-    // Contract
-    let contract = document.getElementById("contract");
-    getSetVariableEvent(contract, "contract", "Contract");
-    // Campaign
-    let campaign = document.getElementById("campaign");
-    getSetVariableEvent(campaign, "campaign", "Campaign");
-    // Product2
-    let product2 = document.getElementById("product2");
-    getSetVariableEvent(product2, "product2", "Product2");
+    const fields = [
+        { id: "account", default: "Account" },
+        { id: "contact", default: "Contact" },
+        { id: "opportunity", default: "Opportunity" },
+        { id: "lead", default: "Lead" },
+        { id: "cases", default: "Case" },
+        { id: "task", default: "Task" },
+        { id: "contract", default: "Contract" },
+        { id: "campaign", default: "Campaign" },
+        { id: "product2", default: "Product2" },
+        { id: "asset", default: "Asset" },
+        { id: "order", default: "Order" },
+        { id: "test", default: "Test__c" },
+    ];
+
+    fields.forEach((field) => {
+        const element = document.getElementById(field.id);
+        getSetVariableEvent(element, field.id, field.default);
+    });
 };

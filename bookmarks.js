@@ -23,122 +23,118 @@ function loadBookmarks() {
 }
 
 function renderBookmarks(bookmarks) {
-    const container = document.getElementById("bookmarksContainer");
-    container.innerHTML = "";
-    bookmarks.forEach((bookmark, index) => {
-        let bookmarkDiv = document.createElement("div");
-        bookmarkDiv.className = "bookmarkItem";
-        bookmarkDiv.draggable = true;
-        bookmarkDiv.dataset.index = index;
+    // Query the active tab to obtain its URL for the proper base URL.
+    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+        let activeTab = tabs[0];
+        let baseUrl = new URL(activeTab.url).origin;
 
-        // Bookmark Name (Title) input – takes 50% width
-        let titleInput = document.createElement("input");
-        titleInput.type = "text";
-        titleInput.value = bookmark.title;
-        titleInput.className = "bookmarkTitle";
+        const container = document.getElementById("bookmarksContainer");
+        container.innerHTML = "";
+        bookmarks.forEach((bookmark, index) => {
+            let bookmarkDiv = document.createElement("div");
+            bookmarkDiv.className = "bookmarkItem";
+            bookmarkDiv.draggable = true;
+            bookmarkDiv.dataset.index = index;
 
-        // Navigate button – takes 25% width
-        let navButton = document.createElement("button");
-        navButton.className = "bookmarkNavigate";
-        navButton.innerHTML = '<i class="fas fa-arrow-circle-right"></i>';
-        navButton.addEventListener("click", function (e) {
-            e.stopPropagation();
-            navigateBookmark(bookmark.url);
+            // Bookmark Name (Title) input – takes 50% width
+            let titleInput = document.createElement("input");
+            titleInput.type = "text";
+            titleInput.value = bookmark.title;
+            titleInput.className = "bookmarkTitle";
+
+            // Navigation Anchor – takes 25% width
+            let navAnchor = document.createElement("a");
+            navAnchor.className = "bookmarkNavigate";
+            navAnchor.innerHTML = '<i class="fas fa-arrow-circle-right"></i>';
+            // Set the href using the active tab’s base URL
+            navAnchor.href = baseUrl + bookmark.url;
+            navAnchor.addEventListener("click", function (e) {
+                // If left-click without modifier keys, intercept and use our custom navigation
+                if (e.button === 0 && !e.metaKey && !e.ctrlKey) {
+                    e.preventDefault();
+                    navigateBookmark(bookmark.url);
+                }
+                // Otherwise, let the browser handle the click (e.g. command/ctrl/right click)
+            });
+
+            // Delete button for removal
+            let removeButton = document.createElement("button");
+            removeButton.className = "bookmarkDelete";
+            removeButton.innerHTML = '<i class="fas fa-trash-alt"></i>';
+            removeButton.addEventListener("click", function (e) {
+                e.stopPropagation();
+                removeBookmark(index);
+            });
+
+            // Create an action container for delete and drag handle – takes 25% width
+            let actionContainer = document.createElement("div");
+            actionContainer.className = "bookmarkActions";
+
+            // Drag handle icon
+            let dragIcon = document.createElement("span");
+            dragIcon.className = "dragHandle";
+            dragIcon.innerHTML = '<i class="fas fa-grip-lines"></i>';
+
+            // Append the delete button and drag handle into the actions container
+            actionContainer.appendChild(removeButton);
+            actionContainer.appendChild(dragIcon);
+
+            // Append elements in the desired order: Title, Navigation Anchor, then Actions.
+            bookmarkDiv.appendChild(titleInput);
+            bookmarkDiv.appendChild(navAnchor);
+            bookmarkDiv.appendChild(actionContainer);
+
+            // Setup drag and drop events for the entire row
+            bookmarkDiv.addEventListener("dragstart", handleDragStart);
+            bookmarkDiv.addEventListener("dragover", handleDragOver);
+            bookmarkDiv.addEventListener("drop", handleDrop);
+
+            // Update bookmark title on keyup (URL remains unchanged)
+            titleInput.addEventListener("keyup", () =>
+                updateBookmark(index, titleInput.value, bookmark.url)
+            );
+
+            container.appendChild(bookmarkDiv);
         });
 
-        // Delete button for removal
-        let removeButton = document.createElement("button");
-        removeButton.className = "bookmarkDelete";
-        removeButton.innerHTML = '<i class="fas fa-trash-alt"></i>';
-        removeButton.addEventListener("click", function (e) {
-            e.stopPropagation();
-            removeBookmark(index);
-        });
-
-        // Create an action container for delete and drag handle – takes 25% width
-        let actionContainer = document.createElement("div");
-        actionContainer.className = "bookmarkActions";
-
-        // Drag handle icon
-        let dragIcon = document.createElement("span");
-        dragIcon.className = "dragHandle";
-        dragIcon.innerHTML = '<i class="fas fa-grip-lines"></i>';
-
-        // Append the delete button and drag handle into the actions container
-        actionContainer.appendChild(removeButton);
-        actionContainer.appendChild(dragIcon);
-
-        // Append elements in the desired order: Title, Navigate, then Actions.
-        bookmarkDiv.appendChild(titleInput);
-        bookmarkDiv.appendChild(navButton);
-        bookmarkDiv.appendChild(actionContainer);
-
-        // Setup drag and drop events for the entire row
-        bookmarkDiv.addEventListener("dragstart", handleDragStart);
-        bookmarkDiv.addEventListener("dragover", handleDragOver);
-        bookmarkDiv.addEventListener("drop", handleDrop);
-
-        // Update bookmark title on keyup (URL remains unchanged)
-        titleInput.addEventListener("keyup", () =>
-            updateBookmark(index, titleInput.value, bookmark.url)
-        );
-
-        container.appendChild(bookmarkDiv);
+        // Update the Add Bookmark button: show it only if there are fewer than 10 bookmarks.
+        const addBookmarkBtn = document.getElementById("addBookmark");
+        addBookmarkBtn.style.display = bookmarks.length < 10 ? "block" : "none";
     });
-
-    // Update the Add Bookmark button: show it only if there are fewer than 10 bookmarks.
-    const addBookmarkBtn = document.getElementById("addBookmark");
-    addBookmarkBtn.style.display = bookmarks.length < 10 ? "block" : "none";
 }
 
-// Open the bookmark URL relative to the current Salesforce base URL.
 function navigateBookmark(url) {
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
         let tab = tabs[0];
         let fullUrl = tab.url;
 
-        // Check if the URL includes "/lightning/"
-        if (!fullUrl.includes("/lightning/")) {
+        if (!fullUrl.includes("/lightning/") && !fullUrl.includes("salesforce.com")) {
             alert("You are not on a Salesforce page!");
             return;
         }
 
-        // Extract base URL from the full URL.
-        let baseUrl = fullUrl.substring(0, fullUrl.indexOf("/", 10));
-        let switchButtonNG = document.getElementById("switchButtonNG").checked;
-
-        if (switchButtonNG) {
-            window.open(baseUrl + url, "_blank");
-        } else {
-            chrome.tabs.remove(tab.id);
-            window.open(baseUrl + url);
-        }
+        let baseUrl = new URL(fullUrl).origin;
+        // Update the active tab's URL so it navigates to the new page.
+        chrome.tabs.update(tab.id, { url: baseUrl + url });
     });
 }
 
-// Add a new bookmark with a default URL (starting with "/lightning/").
+/// Add a new bookmark with a default URL (starting with "/lightning/").
 function addBookmark() {
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
         let tab = tabs[0];
         let currentUrl = tab.url;
-        // Only proceed if it's a Salesforce URL
-        if (
-            !currentUrl.includes("my.salesforce-setup.com") &&
-            !currentUrl.includes("force.com")
-        ) {
-            alert("Not a Salesforce page!");
-            return;
-        }
-        // Ensure the URL contains a /lightning/ segment
+        // Ensure the URL contains a "/lightning/" segment.
         let lightningIndex = currentUrl.indexOf("/lightning/");
         if (lightningIndex === -1) {
-            alert("Current page is not a Lightning page!");
+            alert("You can't add this page to bookmarks!");
             return;
         }
-        // Extract bookmark URL starting from /lightning/ to the end
+        // Extract bookmark URL starting from "/lightning/" to the end.
         let bookmarkUrl = currentUrl.substring(lightningIndex);
-        // Use the current tab's title automatically as the bookmark title
-        let bookmarkTitle = tab.title || "Bookmark";
+        // Use the current tab's title automatically as the bookmark title.
+        let bookmarkTitle =
+            tab.title.replace(" | Salesforce", "").trim() || "Bookmark";
 
         chrome.storage.sync.get("bookmarks", function (result) {
             let bookmarks = result.bookmarks || [];

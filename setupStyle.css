@@ -54,41 +54,42 @@
     cursor: pointer;
 }
 
-#sfNGTabsURL li:hover {
-    background: rgb(243, 243, 243);
-    button {
-        background: rgb(243, 243, 243);
-    }
-}
-
-#sfNGTabsURL button:hover {
-    background: rgb(243, 243, 243);
-}
-
 /* Styling for the tab list */
 #sfNGTabsURL {
     display: flex;
     list-style: none;
     padding: 0;
     margin: 0;
-}
-
-#sfNGTabsURL {
     width: 100%;
     overflow-x: auto;
+    border-bottom: 1px solid #ccc;
 }
 
+/* LI styling for tabs */
 #sfNGTabsURL li {
     border-right: 1px solid #ccc;
     cursor: pointer;
     max-width: 200px;
     min-width: 30px;
+}
+
+/* Anchor styling inside tabs */
+#sfNGTabsURL li a {
+    display: block;
+    padding: 8px 10px;
+    text-decoration: none;
+    color: inherit;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
-/* Plus and Edit LI items */
+/* Hover state for anchors in tabs */
+#sfNGTabsURL li a:hover {
+    background: rgb(243, 243, 243);
+}
+
+/* Plus and Edit LI items (buttons) */
 #plusLi button,
 #editLi button {
     padding: 8px 10px;
@@ -98,9 +99,11 @@
     border-left: none;
 }
 
-/* Plus and Edit LI items */
+/* Additional styling for Edit LI items */
 #editLi button {
-    border-radius: 0px;
+    border-radius: 0;
+    font-size: 18px;
+    margin-right: 5px;
 }
 
 #editLi {
@@ -109,16 +112,23 @@
     align-items: center;
 }
 
-.custom-modal input::placeholder {
-    color: #ccc;
-    opacity: 1;
-}
-
+/* Remove borders for plus and edit LI */
 #plusLi,
 #editLi {
     border: none;
 }
 
-ul#sfNGTabsURL li:not(#plusLi):not(#editLi) {
-    padding: 8px 10px;
+/* Custom Settings Button styling */
+#customSettingsBtn {
+    font-size: 15px;
+    margin-right: 3px;
+    text-decoration: none;
+    color: inherit;
+    display: inline-block;
+}
+
+/* Modal input placeholder styling */
+.custom-modal input::placeholder {
+    color: #ccc;
+    opacity: 1;
 }

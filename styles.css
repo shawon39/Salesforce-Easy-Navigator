@@ -1,56 +1,127 @@
+/* Overall */
 body {
     width: 480px;
     font-family: "Nunito", sans-serif;
 }
-button {
-    background: none;
-    color: inherit;
-    border: none;
-    padding: 0;
-    font: inherit;
-    cursor: pointer;
-    outline: inherit;
-}
-button {
-    padding-top: 2px;
-    padding-bottom: 2px;
-    border: 1px solid #ddd;
-    font-family: "Nunito", sans-serif;
-    background-color: #e8e8e8;
-}
+
+/* Header */
 .header {
     display: flex;
-    justify-content: center;
-    font-weight: 600;
-    text-align: center;
-    color: #0a66c2;
 }
 .header .social {
     display: flex;
     justify-content: space-around;
     height: 20px;
     position: absolute;
-    top: -6px;
+    top: -4px;
     left: -4px;
     margin: 10px;
-    width: 60px;
+    width: 45px;
     font-size: 15px;
 }
+
+/* Main Buttons */
 .mainButtons {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-gap: 5px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3px;
     font-weight: bold;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    grid-gap: 5px 8px;
 }
+
+.mainButtons a {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background-color: #e8e8e8;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    padding: 4px 0;
+    color: inherit;
+    text-decoration: none;
+}
+
+.mainButtons a:hover {
+    background-color: cadetblue;
+    color: #fff;
+}
+
+/* sObject Section Grid Container */
 .sObject {
+    margin-top: 10px;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
     justify-items: center;
+    margin-bottom: 15px;
 }
-.sObject button {
-    margin-left: 1px;
-    width: 46px;
+
+.objLabel::placeholder {
+    color: #aaa;
+    font-size: 11px;
 }
+
+/* Each sObject Group */
+.sObjectGroup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Input Styling */
+.sObjectGroup .objLabel {
+    width: 100px;
+    margin-bottom: 5px;
+    text-align: center;
+    font-size: 12px;
+    padding: 4px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+/* Action Buttons Grid: Exactly three items per row, width matching input */
+.sObjectButtons {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+    width: 110px;
+    padding: 0;
+    margin: 0;
+}
+
+/* Remove default spacing for list items */
+.sObjectButtons li {
+    margin: 0;
+    padding: 0;
+}
+
+/* Action Link Styling */
+.sObjectButtons a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #e8e8e8;
+    border: 1px solid #ddd;
+    padding: 2px 0;
+    text-decoration: none;
+    color: inherit;
+    font-size: 12px; /* adjust icon size if necessary */
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Hover effect for action links */
+.sObjectButtons a:hover {
+    background-color: cadetblue;
+    color: #fff;
+}
+
+/* Bookmarks Header */
 .bookmarks > div > p {
     font-weight: 600;
     text-align: center;
@@ -58,48 +129,7 @@ button {
     font-size: 12px;
     height: 10px;
 }
-.mainButtons > button {
-    width: 115px;
-}
-.bookmarks,
-.sObject {
-    margin-top: -6px;
-}
-.bookmarksList {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-gap: 2px;
-}
-.reset {
-    display: flex;
-    justify-content: flex-end;
-}
-.reset > button {
-    margin-right: 25px !important;
-}
-hr {
-    margin-top: 12px;
-}
-.Lead,
-.Case,
-.Task {
-    margin-top: -8px;
-}
-.sObject > div {
-    text-align: center;
-}
-input.objLabel {
-    margin-top: 16px;
-    margin-bottom: 8px;
-    width: 145px;
-    font-size: 12px;
-    text-align: center;
-}
-button:hover {
-    color: #fff;
-    background: cadetblue;
-    transform: scale(1.1);
-}
+
 input:focus,
 textarea:focus,
 select:focus {
@@ -109,52 +139,9 @@ select:focus {
     transform: scale(1.1);
     color: #000 !important;
 }
-.sObject > div > input[type="text"] {
-    font-weight: 500;
-    text-align: center;
-    font-size: 12px;
-    height: 10px;
-    border: 1px solid darkgrey;
-    padding: 5px 0px;
-}
 
-.bookmarksList > div {
-    display: flex;
-    gap: 5px;
-}
-
-.bookmarksList > div > button {
-    width: 145px;
-}
-
-.bookmarksList > div > input[type="text"] {
-    font-weight: 500;
-    font-size: 12px;
-    height: 10px;
-    border: 1px solid darkgrey;
-    padding: 5px 0px;
-    text-indent: 2px;
-}
-
-.bookmarksList > div > input[type="text"]:first-child {
-    width: 185px;
-}
-
-.bookmarksList > div > input[type="text"]:nth-child(2) {
-    color: gray;
-    font-style: italic;
-}
-
-.bookmarksList button:hover {
-    transform: scale(1);
-}
-
-.sObject button > i,
-.bookmarksList button > i {
-    pointer-events: none;
-}
-
-.reset button {
+/* Button Hover Effects */
+#addBookmark {
     background: none;
     color: inherit;
     border: none;
@@ -162,154 +149,111 @@ select:focus {
     font: inherit;
     cursor: pointer;
     outline: inherit;
-    color: #0a66c2;
 }
 
-.reset button:hover {
+#addBookmark {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    border: 1px solid #ddd;
+    font-family: "Nunito", sans-serif;
+    background-color: #e8e8e8;
+}
+
+#addBookmark:hover {
     color: #fff;
     background: cadetblue;
-    transform: scale(1);
-}
-
-.bookmarksList button,
-.sObject button {
-    color: dimgray;
-}
-.bookmarksList button:hover,
-.sObject button:hover {
-    color: #fff;
     transform: scale(1.1);
 }
 
-/* Switch */
-
-.switch {
-    position: relative;
-    display: inline-block;
-    width: 44px;
-    height: 19px;
-    margin-left: 10px;
-}
-
-.switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
-
-.slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    -webkit-transition: 0.4s;
-    transition: 0.4s;
-}
-
-.slider:before {
-    position: absolute;
-    content: "";
-    height: 19px;
-    width: 19px;
-    left: 0px;
-    bottom: 0.5px;
-    background-color: #4e5156;
-    -webkit-transition: 0.4s;
-    transition: 0.4s;
-}
-
-input:checked + .slider {
-    background-color: lightblue;
-}
-
-input:focus + .slider {
-    box-shadow: 0 0 1px lightblue;
-}
-
-input:checked + .slider:before {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
-    transform: translateX(26px);
-}
-
-/* Rounded sliders */
-.slider.round {
-    border-radius: 34px;
-}
-
-.slider.round:before {
-    border-radius: 50%;
+/* Container for bookmarks */
+.bookmarks {
+    margin-top: 10px;
 }
 
 .bookmarksList {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 2px;
 }
 
+/* Each bookmark row */
 .bookmarkItem {
     display: flex;
     align-items: center;
     gap: 5px;
     border: 1px solid #ddd;
     background-color: #f9f9f9;
+    border-radius: 4px;
 }
 
-/* Bookmark title occupies 50% of the row */
-.bookmarkTitle {
-    flex: 0 0 50%;
+/* Title input – fixed width (old design) */
+.bookmarkItem > input.bookmarkTitle {
+    width: 234px;
+    font-weight: 500;
+    font-size: 12px;
+    height: 10px;
+    border: 1px solid #e8e8e8;
+    padding: 5px 0;
+    text-indent: 2px;
 }
 
-/* Navigate button occupies 25% of the row and centers its content */
-.bookmarkNavigate {
-    flex: 0 0 25%;
+/* Navigation anchor – styled as a button with fixed width */
+.bookmarkItem > a.bookmarkNavigate {
+    width: 115px;
+    display: inline-block;
+    text-align: center;
+    background-color: #e8e8e8;
+    border: 1px solid #ddd;
+    padding: 2px 0;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+.bookmarkItem > a.bookmarkNavigate:hover {
+    background-color: cadetblue;
+    color: #fff;
+}
+
+/* Actions container for delete button and drag handle – share space evenly */
+.bookmarkItem > .bookmarkActions {
+    display: flex;
+    flex: 1;
+    justify-content: end;
+    align-items: center;
+}
+
+/* Delete button and drag handle icons – share space evenly */
+.bookmarkItem .bookmarkDelete,
+.bookmarkItem .dragHandle {
+    flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-/* Actions container (delete and drag handle) occupies 25% */
-.bookmarkActions {
-    flex: 0 0 25%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-
-/* Style the Add Bookmark button to appear at the right side */
-#addBookmark {
-    display: block;
-    margin: 10px 0 0 auto; /* top margin of 10px, auto left margin pushes it right */
-    padding: 5px 10px;
-    border-radius: 22px;
-}
-
-/* Styles for the delete button and drag handle icon */
-.bookmarkDelete,
-.dragHandle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 20px;
-    height: 20px;
     cursor: pointer;
     background: none;
     border: none;
 }
-
-.bookmarkDelete i,
-.dragHandle i {
-    font-size: 13px;
+.bookmarkItem .bookmarkDelete i,
+.bookmarkItem .dragHandle i {
+    font-size: 12px;
     color: #555;
 }
-
-.bookmarkDelete:hover i {
-    color: #fff; /* red on hover for delete */
+/* Updated hover for delete button to match navigate hover */
+.bookmarkItem .bookmarkDelete:hover {
+    background-color: cadetblue;
+}
+.bookmarkItem .bookmarkDelete:hover i {
+    color: #fff;
+}
+/* Keep drag handle hover as is */
+.bookmarkItem .dragHandle:hover i {
+    color: #888;
 }
 
-.dragHandle:hover i {
-    color: #888; /* darker on hover for drag icon */
+/* Add Bookmark button */
+#addBookmark {
+    display: block;
+    margin: 10px 0 0 auto;
+    padding: 5px 10px;
+    border-radius: 22px;
 }
