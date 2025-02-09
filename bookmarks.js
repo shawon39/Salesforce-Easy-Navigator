@@ -116,6 +116,7 @@ function navigateBookmark(url) {
         let baseUrl = new URL(fullUrl).origin;
         // Update the active tab's URL so it navigates to the new page.
         chrome.tabs.update(tab.id, { url: baseUrl + url });
+        window.close();
     });
 }
 
