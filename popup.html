@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <meta charset="UTF-8" />
+        <title>Salesforce Easy Navigator</title>
         <link rel="stylesheet" href="styles.css" />
         <link
             href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&display=swap"
@@ -10,122 +12,143 @@
             rel="stylesheet"
             href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
         />
+        <!-- Script files in proper order -->
         <script src="popup.js"></script>
-        <script src="openUrl.js"></script>
         <script src="event.js"></script>
         <script src="keyupEvent.js"></script>
         <script src="bookmarks.js"></script>
     </head>
     <body>
+        <!-- Header Section with Social Links -->
         <div class="header">
             <p></p>
             <div class="social">
-                <a
-                    href="https://www.linkedin.com/in/shawon39"
-                    target="_blank"
-                    style="color: #0a66c2"
-                >
+                <a href="https://www.linkedin.com/in/shawon39" target="_blank" style="color: #0a66c2">
                     <i class="fab fa-linkedin"></i>
                 </a>
-                <a href="https://github.com/shawon39" target="_blank">
-                    <i class="fab fa-github"></i>
-                </a>
+                <a href="https://github.com/shawon39" target="_blank"><i class="fab fa-github"></i></a>
             </div>
-        </div>
-        <div class="mainButtons">
-            <button id="home">Home</button>
-            <button id="setup">Setup</button>
-            <button id="devConsole">Developer Console</button>
-            <button id="objManager">Object Manager</button>
-            <button id="flows">Flows</button>
-            <button id="inChangeSets">In Change Sets</button>
-            <button id="outChangeSets">Out Change Sets</button>
-            <button id="users">Users</button>
         </div>
 
+        <!-- Main Tools -->
+        <ul class="mainButtons">
+            <li><a id="home" href="#">Home</a></li>
+            <li><a id="setup" href="#">Setup</a></li>
+            <li><a id="devConsole" href="#">Developer Console</a></li>
+            <li><a id="objManager" href="#">Object Manager</a></li>
+            <li><a id="flows" href="#">Flows</a></li>
+            <li><a id="inChangeSets" href="#">In Change Sets</a></li>
+            <li><a id="outChangeSets" href="#">Out Change Sets</a></li>
+            <li><a id="users" href="#">Users</a></li>
+        </ul>
+
+        <!-- Bookmarks Section -->
         <div class="bookmarks">
-            <div>
-                <p>Bookmark Favorite Tools</p>
-            </div>
             <div id="bookmarksContainer" class="bookmarksList">
                 <!-- Dynamic bookmark items will be inserted here -->
             </div>
             <button id="addBookmark">Bookmark This Tab</button>
         </div>
 
+        <!-- sObject Section using Grid Layout (4 items per row) -->
         <div class="sObject">
-            <div class="Account">
-                <input class="objLabel" type="text" id="account" />
-                <button id="accountNew"><i class="fas fa-plus"></i></button>
-                <button id="accountList"><i class="fas fa-list"></i></button>
-                <button id="accountDetails"><i class="fas fa-edit"></i></button>
+            <div class="sObjectGroup">
+            <input class="objLabel" type="text" id="account" placeholder="Object API Name" />
+            <ul class="sObjectButtons">
+                <li><a id="accountNew" href="#"><i class="fas fa-plus"></i></a></li>
+                <li><a id="accountList" href="#"><i class="fas fa-list"></i></a></li>
+                <li><a id="accountDetails" href="#"><i class="fas fa-edit"></i></a></li>
+            </ul>
             </div>
-            <div class="Contact">
-                <input class="objLabel" type="text" id="contact" />
-                <button id="contactNew"><i class="fas fa-plus"></i></button>
-                <button id="contactList"><i class="fas fa-list"></i></button>
-                <button id="contactDetails"><i class="fas fa-edit"></i></button>
+            <div class="sObjectGroup">
+            <input class="objLabel" type="text" id="contact" placeholder="Object API Name" />
+            <ul class="sObjectButtons">
+                <li><a id="contactNew" href="#"><i class="fas fa-plus"></i></a></li>
+                <li><a id="contactList" href="#"><i class="fas fa-list"></i></a></li>
+                <li><a id="contactDetails" href="#"><i class="fas fa-edit"></i></a></li>
+            </ul>
             </div>
-            <div class="Opportunity">
-                <input class="objLabel" type="text" id="opportunity" />
-                <button id="opportunityNew"><i class="fas fa-plus"></i></button>
-                <button id="opportunityList">
-                    <i class="fas fa-list"></i>
-                </button>
-                <button id="opportunityDetails">
-                    <i class="fas fa-edit"></i>
-                </button>
+            <div class="sObjectGroup">
+            <input class="objLabel" type="text" id="opportunity" placeholder="Object API Name" />
+            <ul class="sObjectButtons">
+                <li><a id="opportunityNew" href="#"><i class="fas fa-plus"></i></a></li>
+                <li><a id="opportunityList" href="#"><i class="fas fa-list"></i></a></li>
+                <li><a id="opportunityDetails" href="#"><i class="fas fa-edit"></i></a></li>
+            </ul>
             </div>
-            <div class="Lead">
-                <input class="objLabel" type="text" id="lead" />
-                <button id="leadNew"><i class="fas fa-plus"></i></button>
-                <button id="leadList"><i class="fas fa-list"></i></button>
-                <button id="leadDetails"><i class="fas fa-edit"></i></button>
+            <div class="sObjectGroup">
+            <input class="objLabel" type="text" id="lead" placeholder="Object API Name" />
+            <ul class="sObjectButtons">
+                <li><a id="leadNew" href="#"><i class="fas fa-plus"></i></a></li>
+                <li><a id="leadList" href="#"><i class="fas fa-list"></i></a></li>
+                <li><a id="leadDetails" href="#"><i class="fas fa-edit"></i></a></li>
+            </ul>
             </div>
-            <div class="Case">
-                <input class="objLabel" type="text" id="cases" />
-                <button id="caseNew"><i class="fas fa-plus"></i></button>
-                <button id="caseList"><i class="fas fa-list"></i></button>
-                <button id="caseDetails"><i class="fas fa-edit"></i></button>
+            <div class="sObjectGroup">
+            <input class="objLabel" type="text" id="cases" placeholder="Object API Name" />
+            <ul class="sObjectButtons">
+                <li><a id="caseNew" href="#"><i class="fas fa-plus"></i></a></li>
+                <li><a id="caseList" href="#"><i class="fas fa-list"></i></a></li>
+                <li><a id="caseDetails" href="#"><i class="fas fa-edit"></i></a></li>
+            </ul>
             </div>
-            <div class="Task">
-                <input class="objLabel" type="text" id="task" />
-                <button id="taskNew"><i class="fas fa-plus"></i></button>
-                <button id="taskList"><i class="fas fa-list"></i></button>
-                <button id="taskDetails"><i class="fas fa-edit"></i></button>
+            <div class="sObjectGroup">
+            <input class="objLabel" type="text" id="task" placeholder="Object API Name" />
+            <ul class="sObjectButtons">
+                <li><a id="taskNew" href="#"><i class="fas fa-plus"></i></a></li>
+                <li><a id="taskList" href="#"><i class="fas fa-list"></i></a></li>
+                <li><a id="taskDetails" href="#"><i class="fas fa-edit"></i></a></li>
+            </ul>
             </div>
-            <div class="Contract">
-                <input class="objLabel" type="text" id="contract" />
-                <button id="contractNew"><i class="fas fa-plus"></i></button>
-                <button id="contractList"><i class="fas fa-list"></i></button>
-                <button id="contractDetails">
-                    <i class="fas fa-edit"></i>
-                </button>
+            <div class="sObjectGroup">
+            <input class="objLabel" type="text" id="contract" placeholder="Object API Name" />
+            <ul class="sObjectButtons">
+                <li><a id="contractNew" href="#"><i class="fas fa-plus"></i></a></li>
+                <li><a id="contractList" href="#"><i class="fas fa-list"></i></a></li>
+                <li><a id="contractDetails" href="#"><i class="fas fa-edit"></i></a></li>
+            </ul>
             </div>
-            <div class="Campaign">
-                <input class="objLabel" type="text" id="campaign" />
-                <button id="campaignNew"><i class="fas fa-plus"></i></button>
-                <button id="campaignList"><i class="fas fa-list"></i></button>
-                <button id="campaignDetails">
-                    <i class="fas fa-edit"></i>
-                </button>
+            <div class="sObjectGroup">
+            <input class="objLabel" type="text" id="campaign" placeholder="Object API Name" />
+            <ul class="sObjectButtons">
+                <li><a id="campaignNew" href="#"><i class="fas fa-plus"></i></a></li>
+                <li><a id="campaignList" href="#"><i class="fas fa-list"></i></a></li>
+                <li><a id="campaignDetails" href="#"><i class="fas fa-edit"></i></a></li>
+            </ul>
             </div>
-            <div class="Product2">
-                <input class="objLabel" type="text" id="product2" />
-                <button id="product2New"><i class="fas fa-plus"></i></button>
-                <button id="product2List"><i class="fas fa-list"></i></button>
-                <button id="product2Details">
-                    <i class="fas fa-edit"></i>
-                </button>
+            <div class="sObjectGroup">
+            <input class="objLabel" type="text" id="product2" placeholder="Object API Name" />
+            <ul class="sObjectButtons">
+                <li><a id="product2New" href="#"><i class="fas fa-plus"></i></a></li>
+                <li><a id="product2List" href="#"><i class="fas fa-list"></i></a></li>
+                <li><a id="product2Details" href="#"><i class="fas fa-edit"></i></a></li>
+            </ul>
             </div>
-        </div>
-        <hr />
-        <div class="reset">
-            <span>Open In a New Tab?</span>
-            <label class="switch">
-                <input id="switchButtonNG" type="checkbox" checked />
-                <span class="slider round"></span>
-            </label>
-        </div>
+            <!-- Additional three objects -->
+            <div class="sObjectGroup">
+            <input class="objLabel" type="text" id="asset" placeholder="Object API Name" />
+            <ul class="sObjectButtons">
+                <li><a id="assetNew" href="#"><i class="fas fa-plus"></i></a></li>
+                <li><a id="assetList" href="#"><i class="fas fa-list"></i></a></li>
+                <li><a id="assetDetails" href="#"><i class="fas fa-edit"></i></a></li>
+            </ul>
+            </div>
+            <div class="sObjectGroup">
+            <input class="objLabel" type="text" id="order" placeholder="Object API Name" />
+            <ul class="sObjectButtons">
+                <li><a id="orderNew" href="#"><i class="fas fa-plus"></i></a></li>
+                <li><a id="orderList" href="#"><i class="fas fa-list"></i></a></li>
+                <li><a id="orderDetails" href="#"><i class="fas fa-edit"></i></a></li>
+            </ul>
+            </div>
+            <div class="sObjectGroup">
+            <input class="objLabel" type="text" id="test" placeholder="Object API Name" />
+            <ul class="sObjectButtons">
+                <li><a id="testNew" href="#"><i class="fas fa-plus"></i></a></li>
+                <li><a id="testList" href="#"><i class="fas fa-list"></i></a></li>
+                <li><a id="testDetails" href="#"><i class="fas fa-edit"></i></a></li>
+            </ul>
+            </div>
+        </div>  
     </body>
 </html>

@@ -1,7 +1,7 @@
 {
     "name": "Salesforce Easy Navigator",
     "description": "Salesforce Easy Navigator – One-Click Access to Your Most Used Pages!",
-    "version": "2.5.0.0",
+    "version": "2.6.0.0",
     "manifest_version": 3,
     "action": {
         "default_popup": "popup.html",

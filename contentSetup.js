@@ -42,21 +42,38 @@ waitForTabBar((tabBar) => {
                     child.remove();
                 }
             });
-            // Render each stored tab as an LI element.
+
+            // Render each stored tab as an LI element with an anchor element inside.
             tabs.forEach((tab, index) => {
                 const li = document.createElement("li");
-                li.textContent = tab.name;
                 li.setAttribute("draggable", "true");
                 // Store the index as a data attribute for use during drag/drop
                 li.dataset.index = index;
 
-                // Click event for navigation
-                li.addEventListener("click", () => {
-                    const baseUrl = window.location.origin;
-                    window.location.href = baseUrl + tab.link;
+                // Create an anchor element to support right-click behavior.
+                const a = document.createElement("a");
+                const baseUrl = window.location.origin;
+                a.href = baseUrl + tab.link;
+                a.textContent = tab.name;
+                a.title = tab.name;
+
+                // Add click event on the anchor. Intercept left-clicks only.
+                a.addEventListener("click", (event) => {
+                    // Only intercept left-click if no modifier keys (command/ctrl) are pressed.
+                    if (
+                        event.button === 0 &&
+                        !event.metaKey &&
+                        !event.ctrlKey
+                    ) {
+                        event.preventDefault(); // Prevent full page reload
+                        window.location.href = a.href;
+                    }
+                    // If a modifier key is pressed, let the browser handle the click.
                 });
 
-                // Drag event listeners
+                li.appendChild(a);
+
+                // Drag event listeners remain attached to the LI.
                 li.addEventListener("dragstart", (e) => {
                     draggedIndex = Number(li.dataset.index);
                     li.style.opacity = "0.5";
@@ -75,7 +92,8 @@ waitForTabBar((tabBar) => {
                 li.addEventListener("drop", (e) => {
                     e.preventDefault();
                     const targetIndex = Number(li.dataset.index);
-                    if (draggedIndex === null || draggedIndex === targetIndex) return;
+                    if (draggedIndex === null || draggedIndex === targetIndex)
+                        return;
                     // Reorder the tabs array
                     const newTabs = [...tabs];
                     const draggedItem = newTabs.splice(draggedIndex, 1)[0];
@@ -150,7 +168,8 @@ waitForTabBar((tabBar) => {
             }
             // Validate that the newTabLink contains "/lightning"
             if (!newTabLink.startsWith("/lightning/")) {
-                validationMsg.textContent = 'Tab link must start with "/lightning/"';
+                validationMsg.textContent =
+                    'Tab link must start with "/lightning/"';
                 validationMsg.style.color = "red";
                 return;
             }
@@ -161,7 +180,8 @@ waitForTabBar((tabBar) => {
                 chrome.storage.sync.set({ sfTabs: tabs }, () => {
                     loadStoredTabs();
                     // If the edit modal list is open, update it instantly.
-                    const editListContainer = document.getElementById("editModalListNG");
+                    const editListContainer =
+                        document.getElementById("editModalListNG");
                     if (editListContainer) {
                         renderEditList(editListContainer);
                     }
@@ -273,7 +293,8 @@ waitForTabBar((tabBar) => {
             const currentUrl = window.location.href;
             const lightningIndex = currentUrl.indexOf("/lightning");
             if (lightningIndex === -1) {
-                validationMsg.textContent = "Current URL is not a Lightning page.";
+                validationMsg.textContent =
+                    "Current URL is not a Lightning page.";
                 validationMsg.style.color = "red";
                 return;
             }
@@ -350,7 +371,7 @@ waitForTabBar((tabBar) => {
         editLi.style.marginLeft = "auto";
 
         const editButton = document.createElement("button");
-        editButton.textContent = "🖊️";
+        editButton.textContent = "🗑️";
         editButton.addEventListener("click", showEditModal);
         editLi.appendChild(editButton);
         ul.appendChild(editLi);
@@ -358,4 +379,48 @@ waitForTabBar((tabBar) => {
 
     // Finally, load the stored tabs on startup.
     loadStoredTabs();
+});
+
+// Function to wait until the .slds-global-actions element is available
+function waitForGlobalActions(callback) {
+    const intervalId = setInterval(() => {
+        const globalActions = document.querySelector(".slds-global-actions");
+        if (globalActions) {
+            clearInterval(intervalId);
+            callback(globalActions);
+        }
+    }, 500);
+}
+
+waitForGlobalActions((globalActions) => {
+    // Check if the settings button already exists to avoid duplication
+    if (!document.getElementById("customSettingsBtn")) {
+        // Create the settings li element
+        let settingsLi = document.createElement("li");
+        settingsLi.className = "slds-global-actions__item";
+
+        // Create the settings anchor with the appropriate styling and URL
+        let settingsButton = document.createElement("a");
+        settingsButton.id = "customSettingsBtn";
+        settingsButton.className = "slds-button slds-button_icon";
+        settingsButton.innerHTML = "🛠";
+        settingsButton.title = "Setup Page";
+        settingsButton.href =
+            window.location.origin + "/lightning/setup/SetupOneHome/home";
+
+        // Add click event to navigate to Setup page, intercepting only plain left-clicks.
+        settingsButton.addEventListener("click", (event) => {
+            // If left-click without modifier keys, handle SPA navigation.
+            if (event.button === 0 && !event.metaKey && !event.ctrlKey) {
+                event.preventDefault();
+                window.location.href = settingsButton.href;
+            }
+        });
+
+        // Append the anchor to the li element
+        settingsLi.appendChild(settingsButton);
+
+        // Insert as the first child of .slds-global-actions
+        globalActions.insertBefore(settingsLi, globalActions.firstChild);
+    }
 });
