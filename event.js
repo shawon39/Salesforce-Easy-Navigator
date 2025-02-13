@@ -19,7 +19,7 @@ const openPage = (page) => () => pages[page];
 // Function to generate URLs for sObjects
 const openNew = (id) => () => `/lightning/o/${getValue(id)}/new?useRecordTypeCheck=1`;
 const openList = (id) => () => `/lightning/o/${getValue(id)}/home`;
-const openDetail = (id) => () => `/lightning/setup/ObjectManager/${getValue(id)}/FieldsAndRelationships/view`;
+const openDetail = (id) => () => `/lightning/setup/ObjectManager/lookupRedirect?lookup=entityByApiName&apiName=${getValue(id)}`;
 
 // Define navigation functions
 const pageMap = {
