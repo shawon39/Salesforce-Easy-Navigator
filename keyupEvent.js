@@ -6,11 +6,19 @@ let getSetVariableEvent = (element, variableName, defaultVal) => {
             chrome.storage.sync.set({ [variableName]: value });
             document.getElementById(variableName).value = value;
             initializeNavigation();
+            // Update button states after value change
+            if (typeof updateButtonStates === 'function') {
+                updateButtonStates();
+            }
         });
         chrome.storage.sync.get(variableName, (result) => {
             const storedVal = result[variableName];
             document.getElementById(variableName).value =
                 storedVal !== undefined ? storedVal : defaultVal;
+            // Update button states after loading stored value
+            if (typeof updateButtonStates === 'function') {
+                updateButtonStates();
+            }
         });
     }
 };

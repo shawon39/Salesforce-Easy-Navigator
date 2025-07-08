@@ -5,7 +5,7 @@
     "manifest_version": 3,
     "action": {
         "default_popup": "popup.html",
-        "default_title": "Salesforce Easy Navigator - Quick Access to Your Most Used Pages",
+        "default_title": "Salesforce Easy Navigator",
         "default_icon": {
             "16": "/images/navigator16.png",
             "32": "/images/navigator32.png",
