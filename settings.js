@@ -4,7 +4,8 @@ class SettingsManager {
         this.defaultSettings = {
             darkMode: false,
             autoClose: true,
-            confirmDelete: true
+            confirmDelete: true,
+            notifications: true
         };
         this.initializeEventListeners();
         this.loadSettings();
@@ -25,6 +26,7 @@ class SettingsManager {
         document.getElementById('darkMode').addEventListener('change', (e) => this.updateSetting('darkMode', e.target.checked));
         document.getElementById('autoClose').addEventListener('change', (e) => this.updateSetting('autoClose', e.target.checked));
         document.getElementById('confirmDelete').addEventListener('change', (e) => this.updateSetting('confirmDelete', e.target.checked));
+        document.getElementById('notifications').addEventListener('change', (e) => this.updateSetting('notifications', e.target.checked));
         
         // Data management
         document.getElementById('resetBtn').addEventListener('click', () => this.resetToDefault());
@@ -71,6 +73,7 @@ class SettingsManager {
         document.getElementById('darkMode').checked = settings.darkMode || false;
         document.getElementById('autoClose').checked = settings.autoClose !== false;
         document.getElementById('confirmDelete').checked = settings.confirmDelete !== false;
+        document.getElementById('notifications').checked = settings.notifications !== false;
         
         // Apply visual changes instantly
         this.applyVisualSettings(settings);

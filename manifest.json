@@ -1,10 +1,11 @@
 {
     "name": "Salesforce Easy Navigator",
-    "description": "Salesforce Easy Navigator – One-Click Access to Your Most Used Pages!",
-    "version": "2.6.1.0",
+    "description": "⚡ Navigate Salesforce Lightning faster than ever! Quick access to Setup, Developer Console, Object Manager, and your favorite pages. Boost productivity with smart bookmarks, dark mode, and one-click navigation to any Salesforce page.",
+    "version": "3.1.0",
     "manifest_version": 3,
     "action": {
         "default_popup": "popup.html",
+        "default_title": "Salesforce Easy Navigator - Quick Access to Your Most Used Pages",
         "default_icon": {
             "16": "/images/navigator16.png",
             "32": "/images/navigator32.png",
@@ -18,12 +19,13 @@
         "48": "/images/navigator48.png",
         "128": "/images/navigator128.png"
     },
-    "permissions": ["tabs", "storage"],
+    "permissions": ["tabs", "storage", "notifications"],
+    "host_permissions": ["*://*/lightning/*", "*://*.salesforce.com/*", "*://*.force.com/*"],
     "commands": {
         "_execute_action": {
             "suggested_key": {
-                "default": "Ctrl+Shift+N",
-                "mac": "Ctrl+Shift+N"
+                "default": "Ctrl+Shift+S",
+                "mac": "Command+Shift+S"
             },
             "description": "Open Salesforce Easy Navigator"
         }
@@ -34,6 +36,15 @@
             "js": ["contentSetup.js"],
             "css": ["setupStyle.css"],
             "run_at": "document_end"
+        }
+    ],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "web_accessible_resources": [
+        {
+            "resources": ["images/*"],
+            "matches": ["*://*.salesforce.com/*", "*://*.force.com/*"]
         }
     ]
 }

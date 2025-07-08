@@ -13,6 +13,7 @@
             href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
         />
         <!-- Script files in proper order -->
+        <script src="performance-utils.js"></script>
         <script src="popup.js"></script>
         <script src="event.js"></script>
         <script src="keyupEvent.js"></script>
@@ -22,8 +23,16 @@
     <body>
         <!-- Title Section -->
         <div class="title-section">
-            <h1 class="main-title">Salesforce Easy Navigation</h1>
+            <div class="title-left">
+                <div class="logo-container">
+                    <img src="images/navigator32.png" alt="Salesforce Easy Navigator" class="logo">
+                </div>
+                <div class="title-content">
+                    <h1 class="main-title">Salesforce Easy Navigation</h1>
+                </div>
+            </div>
             <div class="title-right">
+
                 <div class="social-icons">
                     <a href="https://www.linkedin.com/in/shawon39" target="_blank" class="social-link linkedin">
                         <i class="fab fa-linkedin"></i>
@@ -37,6 +46,8 @@
                 </button>
             </div>
         </div>
+
+
 
         <!-- Advanced Settings Modal -->
         <div id="settingsModal" class="modal">
@@ -84,6 +95,11 @@
                                 <input type="checkbox" id="confirmDelete" class="settings-checkbox">
                                 <span class="checkmark"></span>
                                 Confirm before deleting bookmarks
+                            </label>
+                            <label class="settings-label">
+                                <input type="checkbox" id="notifications" class="settings-checkbox">
+                                <span class="checkmark"></span>
+                                Enable notifications
                             </label>
                         </div>
                     </div>

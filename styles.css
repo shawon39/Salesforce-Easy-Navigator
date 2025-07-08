@@ -22,11 +22,44 @@ body {
     overflow: hidden;
 }
 
+.title-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.logo {
+    width: 20px;
+    height: 20px;
+    filter: brightness(0) invert(1);
+}
+
+.title-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+
+
 .title-right {
     display: flex;
     align-items: center;
     gap: 8px;
 }
+
+
 
 .title-section::before {
     content: '';
@@ -502,7 +535,7 @@ body {
     padding: 6px 12px;
     border: 2px dashed #d1d5db;
     border-radius: 4px;
-    background: transparent;
+    background: transparent; .
     color: #6b7280;
     font-size: 12px;
     font-weight: 500;
@@ -738,5 +771,7 @@ body.dark-mode .settings-checkbox:hover {
 body.dark-mode .settings-group {
     background: #4b5563;
 }
+
+
 
 
