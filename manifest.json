@@ -19,6 +19,15 @@
         "128": "/images/navigator128.png"
     },
     "permissions": ["tabs", "storage"],
+    "commands": {
+        "_execute_action": {
+            "suggested_key": {
+                "default": "Ctrl+Shift+N",
+                "mac": "Ctrl+Shift+N"
+            },
+            "description": "Open Salesforce Easy Navigator"
+        }
+    },
     "content_scripts": [
         {
             "matches": ["*://*/lightning/*"],

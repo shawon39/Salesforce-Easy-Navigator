@@ -1,7 +1,29 @@
 // contentSetup.js
 
+// Function to check if we should show custom tabs on current page
+function shouldShowCustomTabs() {
+    const currentUrl = window.location.href;
+    const currentPath = window.location.pathname;
+    
+    const isSetupPage = currentUrl.includes('setup');
+    
+    const excludedPatterns = [
+        '/lightning/r/',
+        '/lightning/o/',
+    ];
+    
+    const isExcludedPage = excludedPatterns.some(pattern => currentPath.includes(pattern));
+    
+    return isSetupPage && !isExcludedPage;
+}
+
 // Wait for the .tabBar element to be available
 function waitForTabBar(callback) {
+    // First check if we should show tabs on this page
+    if (!shouldShowCustomTabs()) {
+        return; // Exit early if not on appropriate page
+    }
+    
     const intervalId = setInterval(() => {
         const tabBar = document.querySelector(".tabBar");
         if (tabBar) {

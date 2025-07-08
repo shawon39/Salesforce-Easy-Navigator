@@ -116,7 +116,14 @@ function navigateBookmark(url) {
         let baseUrl = new URL(fullUrl).origin;
         // Update the active tab's URL so it navigates to the new page.
         chrome.tabs.update(tab.id, { url: baseUrl + url });
-        window.close();
+        
+        // Check autoClose setting before closing window
+        chrome.storage.sync.get(['settings'], (result) => {
+            const settings = result.settings || { autoClose: true };
+            if (settings.autoClose !== false) {
+                window.close();
+            }
+        });
     });
 }
 
@@ -153,7 +160,18 @@ function addBookmark() {
 
 // Remove a bookmark by its index.
 function removeBookmark(index) {
-    chrome.storage.sync.get("bookmarks", function (result) {
+    chrome.storage.sync.get(['bookmarks', 'settings'], function (result) {
+        const settings = result.settings || { confirmDelete: true };
+        
+        // Check if confirmation is required
+        if (settings.confirmDelete !== false) {
+            const bookmarks = result.bookmarks || [];
+            const bookmarkTitle = bookmarks[index]?.title || 'this bookmark';
+            if (!confirm(`Are you sure you want to delete "${bookmarkTitle}"?`)) {
+                return;
+            }
+        }
+        
         let bookmarks = result.bookmarks || [];
         bookmarks.splice(index, 1);
         chrome.storage.sync.set({ bookmarks: bookmarks }, function () {

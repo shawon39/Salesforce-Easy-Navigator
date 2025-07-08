@@ -5,7 +5,7 @@
         <title>Salesforce Easy Navigator</title>
         <link rel="stylesheet" href="styles.css" />
         <link
-            href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap"
             rel="stylesheet"
         />
         <link
@@ -17,18 +17,95 @@
         <script src="event.js"></script>
         <script src="keyupEvent.js"></script>
         <script src="bookmarks.js"></script>
+        <script src="settings.js"></script>
     </head>
     <body>
-        <!-- Header Section with Social Links -->
-        <div class="header">
-            <p></p>
-            <div class="social">
-                <a href="https://www.linkedin.com/in/shawon39" target="_blank" style="color: #0a66c2">
-                    <i class="fab fa-linkedin"></i>
-                </a>
-                <a href="https://github.com/shawon39" target="_blank"><i class="fab fa-github"></i></a>
+        <!-- Title Section -->
+        <div class="title-section">
+            <h1 class="main-title">Salesforce Easy Navigation</h1>
+            <div class="title-right">
+                <div class="social-icons">
+                    <a href="https://www.linkedin.com/in/shawon39" target="_blank" class="social-link linkedin">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://github.com/shawon39" target="_blank" class="social-link github">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+                <button id="settingsBtn" class="settings-btn" title="Advanced Settings">
+                    <i class="fas fa-cog"></i>
+                </button>
             </div>
         </div>
+
+        <!-- Advanced Settings Modal -->
+        <div id="settingsModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Advanced Settings</h3>
+                    <span class="close">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <div class="settings-section">
+                        <h4><i class="fas fa-download"></i> Import/Export</h4>
+                        <div class="settings-group">
+                            <button id="exportBtn" class="settings-action-btn export-btn">
+                                <i class="fas fa-file-export"></i>
+                                Export Configuration
+                            </button>
+                            <button id="importBtn" class="settings-action-btn import-btn">
+                                <i class="fas fa-file-import"></i>
+                                Import Configuration
+                            </button>
+                            <input type="file" id="importFile" accept=".json" style="display: none;">
+                        </div>
+                    </div>
+                    
+                    <div class="settings-section">
+                        <h4><i class="fas fa-palette"></i> Appearance</h4>
+                        <div class="settings-group">
+                            <label class="settings-label">
+                                <input type="checkbox" id="darkMode" class="settings-checkbox">
+                                <span class="checkmark"></span>
+                                Dark Mode
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="settings-section">
+                        <h4><i class="fas fa-tools"></i> Behavior</h4>
+                        <div class="settings-group">
+                            <label class="settings-label">
+                                <input type="checkbox" id="autoClose" class="settings-checkbox">
+                                <span class="checkmark"></span>
+                                Auto-close after navigation
+                            </label>
+                            <label class="settings-label">
+                                <input type="checkbox" id="confirmDelete" class="settings-checkbox">
+                                <span class="checkmark"></span>
+                                Confirm before deleting bookmarks
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="settings-section">
+                        <h4><i class="fas fa-shield-alt"></i> Data</h4>
+                        <div class="settings-group">
+                            <button id="resetBtn" class="settings-action-btn reset-btn">
+                                <i class="fas fa-redo"></i>
+                                Reset to Default
+                            </button>
+                            <button id="clearBtn" class="settings-action-btn clear-btn">
+                                <i class="fas fa-trash"></i>
+                                Clear All Data
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
 
         <!-- Main Tools -->
         <ul class="mainButtons">

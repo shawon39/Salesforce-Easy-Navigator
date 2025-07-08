@@ -97,7 +97,14 @@ const initializeNavigation = async () => {
                 if (event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey) {
                     event.preventDefault();
                     chrome.tabs.update(tab.id, { url: el.href });
-                    window.close();
+                    
+                    // Check autoClose setting before closing window
+                    chrome.storage.sync.get(['settings'], (result) => {
+                        const settings = result.settings || { autoClose: true };
+                        if (settings.autoClose !== false) {
+                            window.close();
+                        }
+                    });
                 }
             });
         }
