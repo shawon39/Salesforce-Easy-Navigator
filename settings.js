@@ -220,7 +220,8 @@ class SettingsManager {
                 bookmarks: [
                     { title: "App Manager", url: "/lightning/setup/NavigationMenus/home" },
                     { title: "Static Resources", url: "/lightning/setup/StaticResources/home" },
-                    { title: "Permission Sets", url: "/lightning/setup/PermSets/home" }
+                    { title: "Permission Sets", url: "/lightning/setup/PermSets/home" },
+                    { title: "Installed Packages", url: "/lightning/setup/ImportedPackage/home" }
                 ]
             }, () => {
                 this.applySettings(this.defaultSettings);

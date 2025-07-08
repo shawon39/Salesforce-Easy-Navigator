@@ -15,6 +15,10 @@ function loadBookmarks() {
                     title: "Permission Sets",
                     url: "/lightning/setup/PermSets/home",
                 },
+                {
+                    title: "Installed Packages",
+                    url: "/lightning/setup/ImportedPackage/home",
+                },
             ];
             chrome.storage.sync.set({ bookmarks: bookmarks });
         }
