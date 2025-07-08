@@ -24,10 +24,24 @@
     "commands": {
         "_execute_action": {
             "suggested_key": {
-                "default": "Ctrl+Shift+S",
-                "mac": "Command+Shift+S"
+                "default": "Alt+N",
+                "mac": "Alt+N"
             },
             "description": "Open Salesforce Easy Navigator"
+        },
+        "navigate_to_setup": {
+            "suggested_key": {
+                "default": "Alt+S",
+                "mac": "Alt+S"
+            },
+            "description": "Navigate to Salesforce Setup"
+        },
+        "navigate_to_home": {
+            "suggested_key": {
+                "default": "Alt+H",
+                "mac": "Alt+H"
+            },
+            "description": "Navigate to Salesforce Home"
         }
     },
     "content_scripts": [

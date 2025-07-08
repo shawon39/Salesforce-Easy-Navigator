@@ -7,8 +7,62 @@ chrome.commands.onCommand.addListener((command) => {
         case '_execute_action':
             // This opens the popup automatically
             break;
+        case 'navigate_to_setup':
+            handleNavigateToSetup();
+            break;
+        case 'navigate_to_home':
+            handleNavigateToHome();
+            break;
     }
 });
+
+// Navigate to Salesforce Setup
+async function handleNavigateToSetup() {
+    try {
+        const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+        if (!tab) return;
+
+        const url = tab.url;
+        if (!url.includes('salesforce.com') && !url.includes('force.com')) {
+            showNotification('Please navigate to a Salesforce page first', 'warning');
+            return;
+        }
+
+        // Extract base URL and navigate to setup
+        const baseUrl = url.substring(0, url.indexOf('/', 10));
+        const setupUrl = `${baseUrl}/lightning/setup/SetupOneHome/home`;
+        
+        await chrome.tabs.update(tab.id, { url: setupUrl });
+        showNotification('Navigated to Salesforce Setup', 'success');
+    } catch (error) {
+        console.error('Error navigating to setup:', error);
+        showNotification('Error navigating to setup', 'error');
+    }
+}
+
+// Navigate to Salesforce Home
+async function handleNavigateToHome() {
+    try {
+        const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+        if (!tab) return;
+
+        const url = tab.url;
+        if (!url.includes('salesforce.com') && !url.includes('force.com')) {
+            showNotification('Please navigate to a Salesforce page first', 'warning');
+            return;
+        }
+
+        // Extract base URL and navigate to home
+        const baseUrl = url.substring(0, url.indexOf('/', 10));
+        const homeUrl = `${baseUrl}/lightning/page/home`;
+        
+        await chrome.tabs.update(tab.id, { url: homeUrl });
+        showNotification('Navigated to Salesforce Home', 'success');
+    } catch (error) {
+        console.error('Error navigating to home:', error);
+        showNotification('Error navigating to home', 'error');
+    }
+}
 
 // Show notification to user
 function showNotification(message, type = 'info') {
