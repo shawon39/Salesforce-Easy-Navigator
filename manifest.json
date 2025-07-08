@@ -1,6 +1,6 @@
 {
     "name": "Salesforce Easy Navigator",
-    "description": "⚡ Navigate Salesforce Lightning faster than ever! Quick access to Setup, Developer Console, Object Manager, and your favorite pages. Boost productivity with smart bookmarks, dark mode, and one-click navigation to any Salesforce page.",
+    "description": "⚡ Navigate Salesforce Lightning faster than ever! Quick access to your favorite pages.",
     "version": "3.1.0",
     "manifest_version": 3,
     "action": {
@@ -19,13 +19,13 @@
         "48": "/images/navigator48.png",
         "128": "/images/navigator128.png"
     },
-    "permissions": ["tabs", "storage", "notifications"],
+    "permissions": ["tabs", "storage"],
     "host_permissions": ["*://*/lightning/*", "*://*.salesforce.com/*", "*://*.force.com/*"],
     "commands": {
         "_execute_action": {
             "suggested_key": {
-                "default": "Alt+N",
-                "mac": "Alt+N"
+                "default": "Ctrl+Shift+S",
+                "mac": "Command+Shift+S"
             },
             "description": "Open Salesforce Easy Navigator"
         },

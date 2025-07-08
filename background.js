@@ -24,7 +24,7 @@ async function handleNavigateToSetup() {
 
         const url = tab.url;
         if (!url.includes('salesforce.com') && !url.includes('force.com')) {
-            showNotification('Please navigate to a Salesforce page first', 'warning');
+            console.log('Not on a Salesforce page');
             return;
         }
 
@@ -33,10 +33,8 @@ async function handleNavigateToSetup() {
         const setupUrl = `${baseUrl}/lightning/setup/SetupOneHome/home`;
         
         await chrome.tabs.update(tab.id, { url: setupUrl });
-        showNotification('Navigated to Salesforce Setup', 'success');
     } catch (error) {
         console.error('Error navigating to setup:', error);
-        showNotification('Error navigating to setup', 'error');
     }
 }
 
@@ -48,7 +46,7 @@ async function handleNavigateToHome() {
 
         const url = tab.url;
         if (!url.includes('salesforce.com') && !url.includes('force.com')) {
-            showNotification('Please navigate to a Salesforce page first', 'warning');
+            console.log('Not on a Salesforce page');
             return;
         }
 
@@ -57,22 +55,14 @@ async function handleNavigateToHome() {
         const homeUrl = `${baseUrl}/lightning/page/home`;
         
         await chrome.tabs.update(tab.id, { url: homeUrl });
-        showNotification('Navigated to Salesforce Home', 'success');
     } catch (error) {
         console.error('Error navigating to home:', error);
-        showNotification('Error navigating to home', 'error');
     }
 }
 
-// Show notification to user
+// Show notification to user (console logging only)
 function showNotification(message, type = 'info') {
-    chrome.notifications.create({
-        type: 'basic',
-        iconUrl: 'images/navigator48.png',
-        title: 'Salesforce Easy Navigator',
-        message: message,
-        priority: type === 'error' ? 2 : 1
-    });
+    console.log(`[Salesforce Easy Navigator] ${type.toUpperCase()}: ${message}`);
 }
 
 // Handle extension installation and updates
@@ -83,19 +73,18 @@ chrome.runtime.onInstalled.addListener((details) => {
             settings: {
                 darkMode: false,
                 autoClose: true,
-                confirmDelete: true,
-                notifications: true
+                confirmDelete: true
             }
         });
         
-        showNotification('Salesforce Easy Navigator installed! Press Ctrl+Shift+S to open.', 'success');
+        console.log('Salesforce Easy Navigator installed! Press Ctrl+Shift+S to open.');
     } else if (details.reason === 'update') {
         // Handle updates
         const previousVersion = details.previousVersion;
         const currentVersion = chrome.runtime.getManifest().version;
         
         if (previousVersion !== currentVersion) {
-            showNotification(`Updated to version ${currentVersion}`, 'success');
+            console.log(`Updated to version ${currentVersion}`);
         }
     }
 });
@@ -133,13 +122,7 @@ chrome.storage.onChanged.addListener((changes, namespace) => {
         const newSettings = changes.settings.newValue;
         const oldSettings = changes.settings.oldValue;
         
-        // Handle notifications setting
-        if (newSettings && !newSettings.notifications) {
-            // Clear any existing notifications
-            chrome.notifications.clear('salesforce-navigator');
-        }
-        
-        // Handle other setting changes if needed
+        // Handle setting changes if needed
         if (newSettings && oldSettings) {
             // Log setting changes for debugging
             console.log('Settings updated:', {
