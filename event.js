@@ -156,13 +156,18 @@ const initializeNavigation = async () => {
         let fullUrl = tab?.url || "";
         let baseUrl = fullUrl.substring(0, fullUrl.indexOf("/", 10));
 
-        // Ensure it's a Salesforce page
+        // Ensure it's a Salesforce page with enhanced detection
         if (baseUrl.includes("my.salesforce-setup.com")) {
             baseUrl = baseUrl.replace("my.salesforce-setup.com", "lightning.force.com");
         }
-        if (!(baseUrl.includes(".force.com") || baseUrl.includes("salesforce.com"))) {
-            alert("You are not on a Salesforce page!");
-            window.close();
+        if (baseUrl.includes(".salesforce-setup.co")) {
+            // Handle salesforce-setup.co domains - keep them as they are for proper navigation
+        }
+        if (!(baseUrl.includes(".force.com") || 
+              baseUrl.includes("salesforce.com") || 
+              baseUrl.includes(".salesforce-setup.co") ||
+              fullUrl.includes("/lightning/"))) {
+            // Salesforce check is now handled in popup.js
             return;
         }
 

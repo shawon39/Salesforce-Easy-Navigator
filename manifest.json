@@ -1,7 +1,7 @@
 {
     "name": "Salesforce Easy Navigator",
     "description": "⚡ Navigate Salesforce Lightning faster than ever! Quick access to your favorite pages.",
-    "version": "3.1.0",
+    "version": "3.3.0",
     "manifest_version": 3,
     "action": {
         "default_popup": "popup.html",
@@ -20,7 +20,7 @@
         "128": "/images/navigator128.png"
     },
     "permissions": ["tabs", "storage"],
-    "host_permissions": ["*://*/lightning/*", "*://*.salesforce.com/*", "*://*.force.com/*"],
+    "host_permissions": ["*://*/lightning/*", "*://*.salesforce.com/*", "*://*.force.com/*", "*://*.salesforce-setup.co/*"],
     "commands": {
         "_execute_action": {
             "suggested_key": {
@@ -46,7 +46,7 @@
     },
     "content_scripts": [
         {
-            "matches": ["*://*/lightning/*"],
+            "matches": ["*://*/lightning/*", "*://*.salesforce-setup.co/*"],
             "js": ["contentSetup.js"],
             "css": ["setupStyle.css"],
             "run_at": "document_end"
@@ -58,7 +58,7 @@
     "web_accessible_resources": [
         {
             "resources": ["images/*"],
-            "matches": ["*://*.salesforce.com/*", "*://*.force.com/*"]
+            "matches": ["*://*.salesforce.com/*", "*://*.force.com/*", "*://*.salesforce-setup.co/*"]
         }
     ]
 }

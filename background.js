@@ -23,7 +23,10 @@ async function handleNavigateToSetup() {
         if (!tab) return;
 
         const url = tab.url;
-        if (!url.includes('salesforce.com') && !url.includes('force.com')) {
+        if (!url.includes('salesforce.com') && 
+            !url.includes('force.com') && 
+            !url.includes('.salesforce-setup.co') && 
+            !url.includes('/lightning/')) {
             console.log('Not on a Salesforce page');
             return;
         }
@@ -45,7 +48,10 @@ async function handleNavigateToHome() {
         if (!tab) return;
 
         const url = tab.url;
-        if (!url.includes('salesforce.com') && !url.includes('force.com')) {
+        if (!url.includes('salesforce.com') && 
+            !url.includes('force.com') && 
+            !url.includes('.salesforce-setup.co') && 
+            !url.includes('/lightning/')) {
             console.log('Not on a Salesforce page');
             return;
         }
@@ -94,7 +100,10 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
     // Only process when page is completely loaded
     if (changeInfo.status === 'complete') {
         const url = tab.url;
-        if (url && (url.includes('salesforce.com') || url.includes('force.com'))) {
+        if (url && (url.includes('salesforce.com') || 
+                   url.includes('force.com') || 
+                   url.includes('.salesforce-setup.co') || 
+                   url.includes('/lightning/'))) {
             // Cache the current tab for better performance
             chrome.storage.local.set({
                 lastSalesforceTab: {

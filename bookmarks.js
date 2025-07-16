@@ -112,7 +112,11 @@ function navigateBookmark(url) {
         let tab = tabs[0];
         let fullUrl = tab.url;
 
-        if (!fullUrl.includes("/lightning/") && !fullUrl.includes("salesforce.com")) {
+        // Enhanced Salesforce detection logic
+        if (!fullUrl.includes("/lightning/") && 
+            !fullUrl.includes("salesforce.com") && 
+            !fullUrl.includes("force.com") && 
+            !fullUrl.includes(".salesforce-setup.co")) {
             alert("You are not on a Salesforce page!");
             return;
         }
